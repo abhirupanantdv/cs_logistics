@@ -1,8 +1,8 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import path from 'path'
-import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -13,36 +13,17 @@ export default defineConfig(({ command }) => ({
     tailwindcss(),
   ],
 
-  // Dynamically set base path: root for dev server, custom assets path for production builds.
-  base: command === 'serve' ? '/' : '/assets/cs_logistics/cs_logistics_app/',
+  // Development uses /
+  // Production uses Frappe's assets path
+  base:
+    command === 'serve'
+      ? '/'
+      : '/assets/cs_logistics/cs_logistics_app/',
 
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-
-  build: {
-    // Build React directly into the Frappe app's public directory
-    outDir: path.resolve(
-      __dirname,
-      '../cs_logistics/public/cs_logistics_app'
-    ),
-
-    emptyOutDir: true,
-
-    rollupOptions: {
-      output: {
-        // Keep generated filenames predictable
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]',
-      },
-    },
-  },
-
-  // Used only when running `npm run dev`
   server: {
+    port: 8080,
+    host: '0.0.0.0',
+
     proxy: {
       '/api': {
         target: 'http://192.168.101.129:8050',
@@ -56,5 +37,22 @@ export default defineConfig(({ command }) => ({
         secure: false,
       },
     },
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+
+  build: {
+    outDir: path.resolve(
+      __dirname,
+      '../cs_logistics/public/cs_logistics_app'
+    ),
+
+    emptyOutDir: true,
+
+    target: 'es2015',
   },
 }))
