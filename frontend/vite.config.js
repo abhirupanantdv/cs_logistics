@@ -7,16 +7,14 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     tailwindcss(),
   ],
 
-  // IMPORTANT:
-  // This must be at the top level, not inside build.
-  // Frappe will serve the compiled frontend from this path.
-  base: '/assets/cs_logistics/cs_logistics_app/',
+  // Dynamically set base path: root for dev server, custom assets path for production builds.
+  base: command === 'serve' ? '/' : '/assets/cs_logistics/cs_logistics_app/',
 
   resolve: {
     alias: {
@@ -59,4 +57,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))
