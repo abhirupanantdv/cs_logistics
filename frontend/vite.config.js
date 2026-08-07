@@ -1,4 +1,3 @@
-//vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -9,29 +8,42 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+
+  // IMPORTANT:
+  // This must be at the top level, not inside build.
+  // Frappe will serve the compiled frontend from this path.
+  base: '/assets/cs_logistics/cs_logistics_app/',
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
+
   build: {
-    // 1. Output compiled assets directly into the Frappe custom app public directory
-    outDir: path.resolve(__dirname, '../cs_logistics/public/cs_logistics_app'),
+    // Build React directly into the Frappe app's public directory
+    outDir: path.resolve(
+      __dirname,
+      '../cs_logistics/public/cs_logistics_app'
+    ),
+
     emptyOutDir: true,
-    
-    // 2. Base public path matches the directory served by Frappe
-    base: '/assets/cs_logistics/cs_logistics_app/',
-    
+
     rollupOptions: {
       output: {
-        // Keeps names stable for easy indexing inside HTML templates
+        // Keep generated filenames predictable
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
-      }
-    }
+        assetFileNames: 'assets/[name].[ext]',
+      },
+    },
   },
+
+  // Used only when running `npm run dev`
   server: {
     proxy: {
       '/api': {
@@ -39,6 +51,7 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+
       '/files': {
         target: 'http://192.168.101.129:8050',
         changeOrigin: true,
