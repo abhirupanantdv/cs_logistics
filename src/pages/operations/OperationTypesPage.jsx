@@ -10,6 +10,7 @@ import AppLayout from '@/components/layout/AppLayout'
 import OperationTabs from './OperationTabs'
 import Pagination from '@/components/common/Pagination'
 import usePagination from '@/hooks/usePagination'
+import Button from '@/components/common/Button'
 
 import {
   getAllOperationTypes,
@@ -472,25 +473,12 @@ export default function OperationTypesPage() {
   )}
 </div>
   {/* Export */}
-  <button
+  <Button
     onClick={exportCSV}
-    className="
-      h-10
-      px-4
-      rounded-lg
-      bg-[#006B82]
-      text-white
-      text-xs
-      font-medium
-      flex
-      items-center
-      gap-2
-      hover:bg-[#005a6a]
-    "
+    icon={<Download size={14} />}
   >
-    <Download size={14} />
     Export CSV
-  </button>
+  </Button>
 </div>
 
         <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">

@@ -1,10 +1,12 @@
 
 //Navbar.jsx
+import { useState, useEffect } from "react";
 import {
   Search,
   Bell,
   ChevronDown,
   Menu,
+  Clock,
 } from "lucide-react";
 
 import { getFileUrl } from "@/config/constants";
@@ -16,6 +18,28 @@ export default function Navbar({
   variant = "app",
   setSidebarOpen,
 }) {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDate = time.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  const formattedTime = time.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
   const { user } = useAuth();
 
   const initials =
@@ -91,6 +115,19 @@ export default function Navbar({
             <Bell size={22} className="text-[#0B2257] cursor-pointer" />
             <span className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500" />
           </div> */}
+
+          {/* Live Date & Time */}
+          <div className="hidden md:flex items-center gap-2">
+            <Clock size={16} className="text-[#006B82]" />
+            <div className="flex flex-col text-right">
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-500">
+                {formattedDate}
+              </span>
+              <span className="text-[13px] font-bold text-[#0B2257] tabular-nums">
+                {formattedTime}
+              </span>
+            </div>
+          </div>
 
           <div className="h-8 w-px bg-slate-200" />
 

@@ -20,6 +20,7 @@ import {
 } from '@/services/jobCardService'
 
 import LinkField from '../common/LinkField'
+import Button from '../common/Button'
 import {
   labelClass,
   underlineInputClass,
@@ -513,14 +514,14 @@ export default function CreateJobCardModal({
           </p>
         </div>
 
-        <button
-          type="button"
+        <Button
           onClick={addContainerRow}
-          className="flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-100 whitespace-nowrap"
+          variant="outline"
+          size="sm"
+          icon={<Plus className="h-4 w-4" />}
         >
-          <Plus className="h-4 w-4" />
           Add Container
-        </button>
+        </Button>
       </div>
 
       {/* TABLE HEADER */}
@@ -719,26 +720,21 @@ export default function CreateJobCardModal({
   </div>
 </form>
 
-        {/* FOOTER */}
         <div className="flex items-center justify-end gap-3 border-t border-gray-100 px-7 py-4">
-          <button
-            type="button"
+          <Button
+            variant="secondary"
             onClick={onClose}
-            className="rounded-xl border border-gray-200 px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
           >
             Cancel
-          </button>
+          </Button>
 
-          <button
+          <Button
             type="submit"
             onClick={handleSubmit}
-            disabled={saving}
-            className="rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+            loading={saving}
           >
-            {saving
-              ? 'Saving...'
-              : 'Save Job Card'}
-          </button>
+            Save Job Card
+          </Button>
         </div>
       </div>
     </div>

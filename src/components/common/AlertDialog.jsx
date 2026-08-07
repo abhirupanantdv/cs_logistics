@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   X,
 } from 'lucide-react'
+import Button from './Button'
 
 export default function AlertDialog({
   open,
@@ -102,21 +103,11 @@ export default function AlertDialog({
             py-4
           "
         >
-          <button
+          <Button
             onClick={onClose}
-            className="
-              rounded-lg
-              bg-[#006B82]
-              px-4
-              py-2
-              text-sm
-              font-medium
-              text-white
-              hover:bg-[#00596c]
-            "
           >
             OK
-          </button>
+          </Button>
         </div>
       </div>
     </div>

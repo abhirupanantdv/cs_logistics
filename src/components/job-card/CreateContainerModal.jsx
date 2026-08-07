@@ -217,13 +217,10 @@ export default function CreateContainerModal({
 
           <Button
             onClick={handleSubmit}
-            disabled={
-              loading || !meta
-            }
+            disabled={!meta}
+            loading={loading}
           >
-            {loading
-              ? 'Creating...'
-              : 'Create Container'}
+            Create Container
           </Button>
         </div>
       </div>

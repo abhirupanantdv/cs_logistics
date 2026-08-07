@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 
 import LinkField from '../common/LinkField'
+import Button from '../common/Button'
 import api from '@/config/api'
 import {
   labelClass,
@@ -528,28 +529,20 @@ if (field.fieldtype === 'Attach') {
           </div>
         </form>
 
-        {/* FOOTER */}
-
         <div className="flex justify-end gap-3 border-t px-7 py-4">
-          <button
+          <Button
             onClick={onClose}
-            type="button"
-            className="rounded-xl border border-gray-200 px-5 py-2.5"
+            variant="secondary"
           >
             Cancel
-          </button>
+          </Button>
 
-          <button
-            onClick={
-              handleSubmit
-            }
-            disabled={saving}
-            className="rounded-xl bg-[#006B82] px-6 py-2.5 font-semibold text-white"
+          <Button
+            onClick={handleSubmit}
+            loading={saving}
           >
-            {saving
-              ? 'Saving...'
-              : 'Save Driver'}
-          </button>
+            Save Driver
+          </Button>
         </div>
       </div>
     </div>

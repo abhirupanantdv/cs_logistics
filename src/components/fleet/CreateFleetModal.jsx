@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 
 import LinkField from '../common/LinkField'
+import Button from '../common/Button'
 import {
   labelClass,
   underlineInputClass,
@@ -122,19 +123,16 @@ export default function CreateFleetModal({
     }))
   }
 
-
-  
   const handleSubmit =
     async (e) => {
       e.preventDefault()
       console.log(
-  'Vehicle Payload:',
-  formData
-)
+        'Vehicle Payload:',
+        formData
+      )
 
       try {
         setSaving(true)
-        
 
         const created =
           await createVehicle(
@@ -145,17 +143,17 @@ export default function CreateFleetModal({
 
         onClose()
       } catch (error) {
-  console.error(
-    'Vehicle Creation Error:',
-    error.response?.data
-  )
+        console.error(
+          'Vehicle Creation Error:',
+          error.response?.data
+        )
 
-  alert(
-    error.response?.data?.exception ||
-    error.response?.data?.message ||
-    'Failed to create vehicle'
-  )
-} finally {
+        alert(
+          error.response?.data?.exception ||
+          error.response?.data?.message ||
+          'Failed to create vehicle'
+        )
+      } finally {
         setSaving(false)
       }
     }
@@ -202,22 +200,22 @@ export default function CreateFleetModal({
     }
 
     if (
-  field.fieldtype === 'Link'
-) {
-  return (
-    <>
-      <label className={labelClass}>
-        {field.label}
-      </label>
+      field.fieldtype === 'Link'
+    ) {
+      return (
+        <>
+          <label className={labelClass}>
+            {field.label}
+          </label>
 
-      <LinkField
-        field={field}
-        value={value}
-        onChange={handleChange}
-      />
-    </>
-  )
-}
+          <LinkField
+            field={field}
+            value={value}
+            onChange={handleChange}
+          />
+        </>
+      )
+    }
 
     if (
       field.fieldtype ===
@@ -401,25 +399,19 @@ export default function CreateFleetModal({
 
         <div className="flex justify-end gap-3 border-t border-gray-100 px-7 py-4">
 
-          <button
-            type="button"
+          <Button
+            variant="secondary"
             onClick={onClose}
-            className="rounded-xl border border-gray-200 px-5 py-2.5"
           >
             Cancel
-          </button>
+          </Button>
 
-          <button
-            onClick={
-              handleSubmit
-            }
-            disabled={saving}
-            className="rounded-xl bg-cyan-600 px-6 py-2.5 font-semibold text-white"
+          <Button
+            onClick={handleSubmit}
+            loading={saving}
           >
-            {saving
-              ? 'Saving...'
-              : 'Save Vehicle'}
-          </button>
+            Save Vehicle
+          </Button>
 
         </div>
 
