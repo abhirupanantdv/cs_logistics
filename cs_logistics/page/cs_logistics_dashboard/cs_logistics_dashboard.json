@@ -1,0 +1,19 @@
+{
+ "creation": "2026-08-07 12:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-08-07 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "CS Logistics",
+ "name": "cs_logistics_dashboard",
+ "owner": "Administrator",
+ "page_name": "cs_logistics_dashboard",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "standard": "Yes",
+ "title": "CS Logistics Dashboard"
+}

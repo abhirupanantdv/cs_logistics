@@ -1,0 +1,10 @@
+include LICENSE
+include README.md
+recursive-include cs_logistics *.html
+recursive-include cs_logistics *.ico
+recursive-include cs_logistics *.js
+recursive-include cs_logistics *.css
+recursive-include cs_logistics *.png
+recursive-include cs_logistics *.svg
+recursive-include cs_logistics *.txt
+recursive-include cs_logistics *.py
