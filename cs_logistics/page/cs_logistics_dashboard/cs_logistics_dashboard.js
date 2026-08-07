@@ -5,6 +5,8 @@ frappe.pages['cs_logistics_dashboard'].on_page_load = function(wrapper) {
 		single_column: true
 	});
 
-	// Render the container for our React app bundle
-	$(wrapper).find('.layout-main-section').empty().append('<div id="root"></div>');
+	// Render iframe for the CS Logistics app
+	$(wrapper).find('.layout-main-section').empty().append(
+		'<iframe src="/cs_logistics" style="width: 100%; height: calc(100vh - 100px); border: none; min-height: 700px;"></iframe>'
+	);
 }

@@ -5,9 +5,8 @@ app_description = "CS Logistics dashboard custom application."
 app_email = "info@cslogistics.com"
 app_license = "mit"
 
-# Includes in <head>
-# ------------------
+# website route rules
+website_route_rules = [
+	{"from_route": "/cs_logistics/<path:app_path>", "to_route": "cs_logistics"},
+]
 
-# include js, css files in header of desk.html
-# app_include_css = "/assets/cs_logistics/css/cs_logistics.css"
-# app_include_js = "/assets/cs_logistics/js/cs_logistics.js"

@@ -1,3 +1,6 @@
+import { getSalesInvoiceDetails } from './salesInvoiceService'
+import { getOperationRecordDetails } from './operationTypeService'
+
 export async function validateJobCardClosure(
   jobCard
 ) {

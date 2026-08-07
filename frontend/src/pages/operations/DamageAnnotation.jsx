@@ -25,6 +25,8 @@ const DamageAnnotation = forwardRef(
     console.log(
   'DamageAnnotation Rendering'
 )
+    const stageRef = useRef(null)
+    const [markers, setMarkers] = useState([])
     const [image] = useImage(
       IMAGE_URL
     )

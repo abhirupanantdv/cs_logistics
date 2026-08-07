@@ -15,9 +15,13 @@ import App from './App'
 import './index.css'
 import AuthProvider from './components/context/AuthContext'
 
+const basename = window.location.pathname.startsWith('/cs_logistics')
+  ? '/cs_logistics'
+  : '/'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <App />
       </AuthProvider>
