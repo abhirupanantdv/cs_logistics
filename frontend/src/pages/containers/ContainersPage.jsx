@@ -182,86 +182,169 @@ const handleContainerClick = async (
     >
       <div className="max-w-7xl mx-auto space-y-4">
         
-        <div className="flex justify-between items-center">
-  {/* Search */}
-  <div className="relative max-w-md w-full">
-    <Search
-      className="
-        absolute
-        left-3
-        top-1/2
-        -translate-y-1/2
-        w-4
-        h-4
-        text-slate-400
-      "
-    />
+        <div className="flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center">
+          {/* Search */}
+          <div className="relative w-full sm:max-w-md">
+            <Search
+              className="
+                absolute
+                left-3
+                top-1/2
+                -translate-y-1/2
+                w-4
+                h-4
+                text-slate-400
+              "
+            />
 
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) =>
-        setSearchTerm(e.target.value)
-      }
-      placeholder="Search containers..."
-      className="
-        w-full
-        h-10
-        pl-10
-        pr-4
-        rounded-lg
-        border
-        border-slate-200
-        bg-white
-        text-xs
-        shadow-sm
-        outline-none
-        focus:ring-2
-        focus:ring-[#006B82]
-        transition-all
-      "
-    />
-  </div>
-
-  {/* New Container Button */}
-  <Button
-  icon={<Plus size={16} />}
-  onClick={() =>
-    setShowCreateModal(true)
-  }
->
-  New Container
-</Button>
-</div>
-
-        {/* Table Card */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-          {/* Header */}
-          <div
-            className="
-              grid
-              grid-cols-12
-              px-5
-              py-3
-              bg-slate-50
-              border-b
-              border-slate-200
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-wider
-              text-slate-400
-            "
-          >
-            <div className="col-span-3 text-left px-2">Container No.</div>
-            <div className="col-span-2 text-left">Size</div>
-            <div className="col-span-3 text-left">Type</div>
-            <div className="col-span-2 text-left">Owner</div>
-            <div className="col-span-2 text-center">Status</div>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) =>
+                setSearchTerm(e.target.value)
+              }
+              placeholder="Search containers..."
+              className="
+                w-full
+                h-10
+                pl-10
+                pr-4
+                rounded-lg
+                border
+                border-slate-200
+                bg-white
+                text-xs
+                shadow-sm
+                outline-none
+                focus:ring-2
+                focus:ring-[#006B82]
+                transition-all
+              "
+            />
           </div>
 
-          {/* Rows */}
-          <div className="divide-y divide-slate-100">
+          {/* New Container Button */}
+          <Button
+            icon={<Plus size={16} />}
+            onClick={() =>
+              setShowCreateModal(true)
+            }
+            className="w-full sm:w-auto justify-center"
+          >
+            New Container
+          </Button>
+        </div>
+
+        {/* Table Card Container */}
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          {/* Desktop Table View (md and above) */}
+          <div className="hidden md:block">
+            {/* Header */}
+            <div
+              className="
+                grid
+                grid-cols-12
+                px-5
+                py-3
+                bg-slate-50
+                border-b
+                border-slate-200
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-wider
+                text-slate-400
+              "
+            >
+              <div className="col-span-3 text-left px-2">Container No.</div>
+              <div className="col-span-2 text-left">Size</div>
+              <div className="col-span-3 text-left">Type</div>
+              <div className="col-span-2 text-left">Owner</div>
+              <div className="col-span-2 text-center">Status</div>
+            </div>
+
+            {/* Rows */}
+            <div className="divide-y divide-slate-100">
+              {loading ? (
+                <div className="p-6 text-center text-sm text-slate-500">
+                  Loading containers...
+                </div>
+              ) : filteredContainers.length === 0 ? (
+                <div className="p-6 text-center text-sm text-slate-500">
+                  No containers found.
+                </div>
+              ) : (
+                paginatedContainers.map((container) => {
+                  const statusStyle = getStatusColor(container.status)
+                  return (
+                    <div
+                      key={container.name}
+                      onClick={() => handleContainerClick(container)}
+                      className="
+                        grid
+                        grid-cols-12
+                        items-center
+                        px-5
+                        py-3
+                        hover:bg-slate-50
+                        cursor-pointer
+                        transition-all
+                      "
+                    >
+                      {/* Container */}
+                      <div className="col-span-3 flex items-center gap-3 px-2">
+                        <div
+                          className={`
+                            w-8
+                            h-8
+                            rounded-lg
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                            ${statusStyle.icon}
+                          `}
+                        >
+                          <Package size={16} />
+                        </div>
+
+                        <div className="font-semibold text-[#0B2257] text-[13px] truncate">
+                          {container.container_number}
+                        </div>
+                      </div>
+
+                      {/* Size */}
+                      <div className="col-span-2 text-left text-[13px] text-slate-600">
+                        {container.size ? `${container.size} FT` : '-'}
+                      </div>
+
+                      {/* Type */}
+                      <div className="col-span-3 text-left text-[13px] text-slate-600 truncate">
+                        {container.item}
+                      </div>
+
+                      {/* Owner */}
+                      <div className="col-span-2 flex items-center gap-2 text-[13px] text-slate-600 min-w-0">
+                        <User size={13} className="text-slate-400 shrink-0" />
+                        <span className="truncate">{container.owner_name}</span>
+                      </div>
+
+                      {/* Status */}
+                      <div className="col-span-2 flex justify-center">
+                        <StatusBadge
+                          label={container.status}
+                          color={statusStyle.badge}
+                        />
+                      </div>
+                    </div>
+                  )
+                })
+              )}
+            </div>
+          </div>
+
+          {/* Mobile Card View (below md) */}
+          <div className="block md:hidden divide-y divide-slate-100">
             {loading ? (
               <div className="p-6 text-center text-sm text-slate-500">
                 Loading containers...
@@ -272,72 +355,68 @@ const handleContainerClick = async (
               </div>
             ) : (
               paginatedContainers.map((container) => {
-  const statusStyle =
-    getStatusColor(
-      container.status
-    )
+                const statusStyle = getStatusColor(container.status)
                 return (
                   <div
-  key={container.name}
-  onClick={() =>
-    handleContainerClick(
-      container
-    )
-  }
-  className="
-    grid
-    grid-cols-12
-    items-center
-    px-5
-    py-3
-    hover:bg-slate-50
-    cursor-pointer
-    transition-all
-  "
->
-                    {/* Container */}
-                    <div className="col-span-3 flex items-center gap-3 px-2">
-                      <div
-                        className={`
-                          w-8
-                          h-8
-                          rounded-lg
-                          flex
-                          items-center
-                          justify-center
-                          ${statusStyle.icon}
-                        `}
-                      >
-                        <Package size={16} />
+                    key={container.name}
+                    onClick={() => handleContainerClick(container)}
+                    className="
+                      p-4
+                      hover:bg-slate-50/80
+                      active:bg-slate-100
+                      cursor-pointer
+                      transition-all
+                      space-y-3
+                    "
+                  >
+                    {/* Header row: Icon + Number + Status Badge */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div
+                          className={`
+                            w-8
+                            h-8
+                            rounded-lg
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                            ${statusStyle.icon}
+                          `}
+                        >
+                          <Package size={16} />
+                        </div>
+                        <span className="font-semibold text-[#0B2257] text-sm truncate">
+                          {container.container_number}
+                        </span>
                       </div>
-
-                      <div className="font-semibold text-[#0B2257] text-[13px]">
-                        {container.container_number}
-                      </div>
-                    </div>
-
-                    {/* Size */}
-                    <div className="col-span-2 text-left text-[13px] text-slate-600">
-                      {container.size ? `${container.size} FT` : '-'}
-                    </div>
-
-                    {/* Type */}
-                    <div className="col-span-3 text-left text-[13px] text-slate-600">
-                      {container.item}
-                    </div>
-
-                    {/* Owner */}
-                    <div className="col-span-2 flex items-center gap-2 text-[13px] text-slate-600">
-                      <User size={13} className="text-slate-400" />
-                      <span className="truncate">{container.owner_name}</span>
-                    </div>
-
-                    {/* Status */}
-                    <div className="col-span-2 flex justify-center">
                       <StatusBadge
                         label={container.status}
                         color={statusStyle.badge}
                       />
+                    </div>
+
+                    {/* Details grid: Size & Type, Owner */}
+                    <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50/80 rounded-lg p-2.5 border border-slate-100">
+                      <div>
+                        <span className="text-[10px] uppercase font-semibold text-slate-400 block mb-0.5">
+                          Size & Type
+                        </span>
+                        <span className="font-medium text-slate-700">
+                          {container.size ? `${container.size} FT` : '-'}
+                          {container.item ? ` • ${container.item}` : ''}
+                        </span>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] uppercase font-semibold text-slate-400 block mb-0.5">
+                          Owner
+                        </span>
+                        <div className="flex items-center gap-1 font-medium text-slate-700 truncate">
+                          <User size={12} className="text-slate-400 shrink-0" />
+                          <span className="truncate">{container.owner_name || '-'}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )
@@ -347,26 +426,28 @@ const handleContainerClick = async (
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-2">
-  <div className="text-xs text-slate-500">
-    Showing{' '}
-    {filteredContainers.length === 0
-      ? 0
-      : (currentPage - 1) * pageSize + 1}
-    {' '}to{' '}
-    {Math.min(
-      currentPage * pageSize,
-      filteredContainers.length
-    )}
-    {' '}of {filteredContainers.length} containers
-  </div>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-center sm:text-left">
+          <div className="text-xs text-slate-500 order-2 sm:order-1">
+            Showing{' '}
+            {filteredContainers.length === 0
+              ? 0
+              : (currentPage - 1) * pageSize + 1}
+            {' '}to{' '}
+            {Math.min(
+              currentPage * pageSize,
+              filteredContainers.length
+            )}
+            {' '}of {filteredContainers.length} containers
+          </div>
 
-  <Pagination
-    currentPage={currentPage}
-    totalPages={totalPages}
-    onPageChange={setCurrentPage}
-  />
-</div>
+          <div className="order-1 sm:order-2">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </div>
+        </div>
       </div>
       {showCreateModal && (
   <CreateContainerModal

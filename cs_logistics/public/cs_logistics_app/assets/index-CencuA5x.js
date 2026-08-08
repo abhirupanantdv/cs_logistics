@@ -282,60 +282,77 @@ font-semibold text-slate-500 shrink-0`,children:[(0,F.jsx)(`div`,{children:`© 2
             px-6 py-4
             border-t border-slate-200
             flex justify-end gap-3
-          `,children:[(0,F.jsx)(ki,{variant:`secondary`,onClick:e,children:`Cancel`}),(0,F.jsx)(ki,{onClick:f,disabled:!a,loading:r,children:`Create Container`})]})]})})}function ic(){let[e,t]=(0,A.useState)([]),[n,r]=(0,A.useState)(!0),[i,a]=(0,A.useState)(``),[o,s]=(0,A.useState)(!1),[c,l]=(0,A.useState)(null),[u,d]=(0,A.useState)(!1);(0,A.useEffect)(()=>{m(1)},[i]),(0,A.useEffect)(()=>{(function(){var e=N(function*(){try{let e=yield $s();console.log(`Container Documents:`,e),t(e||[])}catch(e){console.error(`Error fetching containers:`,e)}finally{r(!1)}});return function(){return e.apply(this,arguments)}})()()},[]);let f=e.filter(e=>{let t=(e.container_number||``).startsWith(`CSL`),n=e.status===`Available`;return!(!t&&n)}).filter(e=>{var t,n,r,a;let o=i.toLowerCase();return((t=e.container_number)==null?void 0:t.toLowerCase().includes(o))||((n=e.item)==null?void 0:n.toLowerCase().includes(o))||((r=e.owner_name)==null?void 0:r.toLowerCase().includes(o))||((a=e.status)==null?void 0:a.toLowerCase().includes(o))||String(e.size||``).toLowerCase().includes(o)}),{currentPage:p,setCurrentPage:m,totalPages:h,paginatedData:g,pageSize:_}=Oi(f),v=e=>{switch(e){case`Available`:return{badge:`bg-green-100 text-green-700`,icon:`bg-green-50 text-green-600`};case`In Transit`:return{badge:`bg-blue-100 text-blue-700`,icon:`bg-blue-50 text-blue-600`};case`In Yard`:return{badge:`bg-orange-100 text-orange-700`,icon:`bg-orange-50 text-orange-600`};case`Dispatched`:return{badge:`bg-cyan-100 text-cyan-700`,icon:`bg-cyan-50 text-cyan-600`};case`Quoted`:return{badge:`bg-purple-100 text-purple-700`,icon:`bg-purple-50 text-purple-600`};case`Invoiced`:return{badge:`bg-emerald-100 text-emerald-700`,icon:`bg-emerald-50 text-emerald-600`};case`Rent`:return{badge:`bg-yellow-100 text-yellow-700`,icon:`bg-yellow-50 text-yellow-600`};case`Delivered`:return{badge:`bg-teal-100 text-teal-700`,icon:`bg-teal-50 text-teal-600`};case`Picked Up`:return{badge:`bg-pink-100 text-pink-700`,icon:`bg-pink-50 text-pink-600`};default:return{badge:`bg-slate-100 text-slate-700`,icon:`bg-slate-50 text-slate-600`}}},y=function(){var e=N(function*(e){try{let t=yield ec(e.name);console.log(`Container Details:`,t),l(t),d(!0)}catch(e){console.error(e)}});return function(t){return e.apply(this,arguments)}}();return(0,F.jsxs)(Mi,{title:`Containers`,description:`View and manage all your containers in one place.`,children:[(0,F.jsxs)(`div`,{className:`max-w-7xl mx-auto space-y-4`,children:[(0,F.jsxs)(`div`,{className:`flex justify-between items-center`,children:[(0,F.jsxs)(`div`,{className:`relative max-w-md w-full`,children:[(0,F.jsx)(mi,{className:`
-        absolute
-        left-3
-        top-1/2
-        -translate-y-1/2
-        w-4
-        h-4
-        text-slate-400
-      `}),(0,F.jsx)(`input`,{type:`text`,value:i,onChange:e=>a(e.target.value),placeholder:`Search containers...`,className:`
-        w-full
-        h-10
-        pl-10
-        pr-4
-        rounded-lg
-        border
-        border-slate-200
-        bg-white
-        text-xs
-        shadow-sm
-        outline-none
-        focus:ring-2
-        focus:ring-[#006B82]
-        transition-all
-      `})]}),(0,F.jsx)(ki,{icon:(0,F.jsx)(di,{size:16}),onClick:()=>s(!0),children:`New Container`})]}),(0,F.jsxs)(`div`,{className:`bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden`,children:[(0,F.jsxs)(`div`,{className:`
-              grid
-              grid-cols-12
-              px-5
-              py-3
-              bg-slate-50
-              border-b
-              border-slate-200
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-wider
-              text-slate-400
-            `,children:[(0,F.jsx)(`div`,{className:`col-span-3 text-left px-2`,children:`Container No.`}),(0,F.jsx)(`div`,{className:`col-span-2 text-left`,children:`Size`}),(0,F.jsx)(`div`,{className:`col-span-3 text-left`,children:`Type`}),(0,F.jsx)(`div`,{className:`col-span-2 text-left`,children:`Owner`}),(0,F.jsx)(`div`,{className:`col-span-2 text-center`,children:`Status`})]}),(0,F.jsx)(`div`,{className:`divide-y divide-slate-100`,children:n?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`Loading containers...`}):f.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No containers found.`}):g.map(e=>{let t=v(e.status);return(0,F.jsxs)(`div`,{onClick:()=>y(e),className:`
-    grid
-    grid-cols-12
-    items-center
-    px-5
-    py-3
-    hover:bg-slate-50
-    cursor-pointer
-    transition-all
-  `,children:[(0,F.jsxs)(`div`,{className:`col-span-3 flex items-center gap-3 px-2`,children:[(0,F.jsx)(`div`,{className:`
-                          w-8
-                          h-8
-                          rounded-lg
-                          flex
-                          items-center
-                          justify-center
-                          ${t.icon}
-                        `,children:(0,F.jsx)(li,{size:16})}),(0,F.jsx)(`div`,{className:`font-semibold text-[#0B2257] text-[13px]`,children:e.container_number})]}),(0,F.jsx)(`div`,{className:`col-span-2 text-left text-[13px] text-slate-600`,children:e.size?`${e.size} FT`:`-`}),(0,F.jsx)(`div`,{className:`col-span-3 text-left text-[13px] text-slate-600`,children:e.item}),(0,F.jsxs)(`div`,{className:`col-span-2 flex items-center gap-2 text-[13px] text-slate-600`,children:[(0,F.jsx)(xi,{size:13,className:`text-slate-400`}),(0,F.jsx)(`span`,{className:`truncate`,children:e.owner_name})]}),(0,F.jsx)(`div`,{className:`col-span-2 flex justify-center`,children:(0,F.jsx)(Ni,{label:e.status,color:t.badge})})]},e.name)})})]}),(0,F.jsxs)(`div`,{className:`flex items-center justify-between pt-2`,children:[(0,F.jsxs)(`div`,{className:`text-xs text-slate-500`,children:[`Showing`,` `,f.length===0?0:(p-1)*_+1,` `,`to`,` `,Math.min(p*_,f.length),` `,`of `,f.length,` containers`]}),(0,F.jsx)(Di,{currentPage:p,totalPages:h,onPageChange:m})]})]}),o&&(0,F.jsx)(rc,{onClose:()=>s(!1),onCreated:e=>{s(!1),t(t=>[e,...t])}}),u&&c&&(0,F.jsx)(Fi,{container:c,onClose:()=>{d(!1),l(null)}})]})}var ac=function(){var e=N(function*(){try{let e=yield B.get(`/resource/Container Job Card`,{params:{fields:JSON.stringify([`name`]),limit_page_length:20,order_by:`creation desc`}});return console.log(`Container Job Card List Response:`,e.data.data),e.data.data||[]}catch(t){var e;throw console.error(`Error fetching Container Job Card list:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),oc=function(){var e=N(function*(e){try{let t=yield B.get(`/resource/Container Job Card/${encodeURIComponent(e)}`);return console.log(`Job Card Details Response for ${e}:`,t.data.data),t.data.data}catch(n){var t;throw console.error(`Error fetching Job Card Details for ${e}:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),sc=function(){var e=N(function*(){try{let e=(yield B.get(`/resource/Container Job Card`,{params:{fields:JSON.stringify([`name`,`customer`,`creation`]),limit_page_length:5,order_by:`creation desc`}})).data.data||[],t=yield Promise.all(e.map(function(){var e=N(function*(e){let t=yield oc(e.name),n=t.operations||[],r=n.length>0?n[n.length-1].operation_name:`-`;return{name:t.name,customer:t.customer,creation:t.creation,lastOperation:r}});return function(t){return e.apply(this,arguments)}}()));return console.log(`Recent Job Cards:`,t),t}catch(t){var e;throw console.error(`Error fetching Recent Job Cards:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),cc=function(){var e=N(function*(){try{var e,t;let n=yield B.get(`/method/frappe.desk.form.load.getdoctype`,{params:{doctype:`Container Job Card`}}),r=((e=n.data)==null||(e=e.docs)==null?void 0:e[0])||((t=n.data)==null||(t=t.message)==null||(t=t.docs)==null?void 0:t[0]);return console.log(`Container Job Card Meta:`,r),r}catch(e){var n;throw console.error(`Error fetching Container Job Card metadata:`,((n=e.response)==null?void 0:n.data)||e),e}});return function(){return e.apply(this,arguments)}}(),lc=function(){var e=N(function*(e){try{let t=yield B.post(`/resource/Container Job Card`,e);return console.log(`Job Card Created:`,t.data.data),t.data.data}catch(e){var t;throw console.error(`Error creating Job Card:`,((t=e.response)==null?void 0:t.data)||e),e}});return function(t){return e.apply(this,arguments)}}(),uc=function(){var e=N(function*(e,t){try{console.log(`Creating ${e}:`,JSON.stringify(t,null,2));let n=yield B.post(`/resource/${encodeURIComponent(e)}`,t);return console.log(`Created ${e}:`,n.data.data),n.data.data}catch(t){var n;throw console.error(`Error creating ${e} document:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t,n){return e.apply(this,arguments)}}(),dc=function(){var e=N(function*(e){try{let t=yield B.post(`/method/frappe.client.submit`,{doc:e});return console.log(`Submitted ${e.doctype}:`,t.data.message||t.data),t.data.message||t.data}catch(n){var t;throw console.error(`Error submitting ${e.doctype} document:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),fc=function(){var e=N(function*(e,t){let n=yield uc(e,t);return[`Quotation`,`Sales Invoice`].includes(e)?yield dc(n):n});return function(t,n){return e.apply(this,arguments)}}();(function(){var e=N(function*(e,t,n){try{let r=new FormData;r.append(`file`,e),r.append(`doctype`,t),r.append(`docname`,n),r.append(`is_private`,0);let i=yield B.post(`/api/method/upload_file`,r,{headers:{"Content-Type":`multipart/form-data`}});return console.log(`File uploaded:`,i.data),i.data.message}catch(e){var r;throw console.error(`Error uploading file:`,((r=e.response)==null?void 0:r.data)||e),e}});return function(t,n,r){return e.apply(this,arguments)}})(),k();var pc=[`name`,`naming_series`,`amended_from`,`owner`,`creation`,`modified`,`modified_by`,`docstatus`,`idx`,`parent`,`parentfield`,`parenttype`],mc=[`Data`,`Small Text`,`Text`,`Select`,`Date`,`Datetime`,`Check`,`Link`,`Table`];function hc({onClose:e,onCreated:t}){let[n,r]=(0,A.useState)([]),[i,a]=(0,A.useState)(null),[o,s]=(0,A.useState)({}),[c,l]=(0,A.useState)([]),[u,d]=(0,A.useState)(!0),[f,p]=(0,A.useState)(!1),[m,h]=(0,A.useState)([]);(0,A.useEffect)(()=>{g(),y()},[]);let g=function(){var e=N(function*(){try{d(!0);let e=yield cc(),t=new Set,n=e.fields.filter(e=>mc.includes(e.fieldtype)&&e.fieldname&&!e.hidden&&!e.read_only&&!e.is_virtual&&!pc.includes(e.fieldname)).filter(e=>t.has(e.fieldname)?!1:(t.add(e.fieldname),!0)),i=n.filter(e=>e.fieldtype!==`Table`),o=n.find(e=>e.fieldtype===`Table`);r(i),a(o);let c={};i.forEach(e=>{e.fieldtype===`Check`?c[e.fieldname]=0:c[e.fieldname]=e.default||``}),s(c)}catch(e){console.error(e)}finally{d(!1)}});return function(){return e.apply(this,arguments)}}(),_=(0,A.useMemo)(()=>n.filter(e=>e.fieldtype!==`Table`),[n]),v=(e,t)=>{s(n=>O(O({},n),{},{[e]:t}))},y=function(){var e=N(function*(){try{let e=yield $s();console.log(`Available Containers:`,e),h(e)}catch(e){console.error(`Error loading containers:`,e)}});return function(){return e.apply(this,arguments)}}(),b=function(){var e=N(function*(e,t){try{if(l(n=>{let r=[...n];return r[e]=O(O({},r[e]),{},{container:t,container_owner:``,type:``}),r}),!t)return;let n=yield ec(t);console.log(`Selected Container Details:`,n),l(r=>{let i=[...r];return i[e]=O(O({},i[e]),{},{container:t,container_owner:n.owner_name||``,type:n.item||``}),i})}catch(e){console.error(`Failed to fetch container details:`,e)}});return function(t,n){return e.apply(this,arguments)}}(),x=()=>{l(e=>[...e,{}])},S=e=>{l(t=>t.filter((t,n)=>n!==e))},C=function(){var n=N(function*(n){n.preventDefault();try{p(!0);let n=O({},o);i!=null&&i.fieldname&&(n[i.fieldname]=c);let r=yield lc(n);t==null||t(r),e()}catch(e){console.error(e),alert(`Failed to create Job Card`)}finally{p(!1)}});return function(e){return n.apply(this,arguments)}}(),w=e=>{var t,n;let r=(t=o[e.fieldname])==null?``:t;if(e.fieldtype===`Check`)return(0,F.jsxs)(`label`,{className:`flex items-center gap-3 text-sm font-medium text-gray-700`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:!!r,onChange:t=>v(e.fieldname,+!!t.target.checked),className:`h-4 w-4 rounded border-gray-300`}),e.label]});if(e.fieldtype===`Link`)return(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`label`,{className:Xs,children:e.label}),(0,F.jsx)(Zs,{field:e,value:r,onChange:v})]});if(e.fieldtype===`Select`){var i;let t=((i=e.options)==null||(i=i.split(`
+          `,children:[(0,F.jsx)(ki,{variant:`secondary`,onClick:e,children:`Cancel`}),(0,F.jsx)(ki,{onClick:f,disabled:!a,loading:r,children:`Create Container`})]})]})})}function ic(){let[e,t]=(0,A.useState)([]),[n,r]=(0,A.useState)(!0),[i,a]=(0,A.useState)(``),[o,s]=(0,A.useState)(!1),[c,l]=(0,A.useState)(null),[u,d]=(0,A.useState)(!1);(0,A.useEffect)(()=>{m(1)},[i]),(0,A.useEffect)(()=>{(function(){var e=N(function*(){try{let e=yield $s();console.log(`Container Documents:`,e),t(e||[])}catch(e){console.error(`Error fetching containers:`,e)}finally{r(!1)}});return function(){return e.apply(this,arguments)}})()()},[]);let f=e.filter(e=>{let t=(e.container_number||``).startsWith(`CSL`),n=e.status===`Available`;return!(!t&&n)}).filter(e=>{var t,n,r,a;let o=i.toLowerCase();return((t=e.container_number)==null?void 0:t.toLowerCase().includes(o))||((n=e.item)==null?void 0:n.toLowerCase().includes(o))||((r=e.owner_name)==null?void 0:r.toLowerCase().includes(o))||((a=e.status)==null?void 0:a.toLowerCase().includes(o))||String(e.size||``).toLowerCase().includes(o)}),{currentPage:p,setCurrentPage:m,totalPages:h,paginatedData:g,pageSize:_}=Oi(f),v=e=>{switch(e){case`Available`:return{badge:`bg-green-100 text-green-700`,icon:`bg-green-50 text-green-600`};case`In Transit`:return{badge:`bg-blue-100 text-blue-700`,icon:`bg-blue-50 text-blue-600`};case`In Yard`:return{badge:`bg-orange-100 text-orange-700`,icon:`bg-orange-50 text-orange-600`};case`Dispatched`:return{badge:`bg-cyan-100 text-cyan-700`,icon:`bg-cyan-50 text-cyan-600`};case`Quoted`:return{badge:`bg-purple-100 text-purple-700`,icon:`bg-purple-50 text-purple-600`};case`Invoiced`:return{badge:`bg-emerald-100 text-emerald-700`,icon:`bg-emerald-50 text-emerald-600`};case`Rent`:return{badge:`bg-yellow-100 text-yellow-700`,icon:`bg-yellow-50 text-yellow-600`};case`Delivered`:return{badge:`bg-teal-100 text-teal-700`,icon:`bg-teal-50 text-teal-600`};case`Picked Up`:return{badge:`bg-pink-100 text-pink-700`,icon:`bg-pink-50 text-pink-600`};default:return{badge:`bg-slate-100 text-slate-700`,icon:`bg-slate-50 text-slate-600`}}},y=function(){var e=N(function*(e){try{let t=yield ec(e.name);console.log(`Container Details:`,t),l(t),d(!0)}catch(e){console.error(e)}});return function(t){return e.apply(this,arguments)}}();return(0,F.jsxs)(Mi,{title:`Containers`,description:`View and manage all your containers in one place.`,children:[(0,F.jsxs)(`div`,{className:`max-w-7xl mx-auto space-y-4`,children:[(0,F.jsxs)(`div`,{className:`flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center`,children:[(0,F.jsxs)(`div`,{className:`relative w-full sm:max-w-md`,children:[(0,F.jsx)(mi,{className:`
+                absolute
+                left-3
+                top-1/2
+                -translate-y-1/2
+                w-4
+                h-4
+                text-slate-400
+              `}),(0,F.jsx)(`input`,{type:`text`,value:i,onChange:e=>a(e.target.value),placeholder:`Search containers...`,className:`
+                w-full
+                h-10
+                pl-10
+                pr-4
+                rounded-lg
+                border
+                border-slate-200
+                bg-white
+                text-xs
+                shadow-sm
+                outline-none
+                focus:ring-2
+                focus:ring-[#006B82]
+                transition-all
+              `})]}),(0,F.jsx)(ki,{icon:(0,F.jsx)(di,{size:16}),onClick:()=>s(!0),className:`w-full sm:w-auto justify-center`,children:`New Container`})]}),(0,F.jsxs)(`div`,{className:`bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden`,children:[(0,F.jsxs)(`div`,{className:`hidden md:block`,children:[(0,F.jsxs)(`div`,{className:`
+                grid
+                grid-cols-12
+                px-5
+                py-3
+                bg-slate-50
+                border-b
+                border-slate-200
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-wider
+                text-slate-400
+              `,children:[(0,F.jsx)(`div`,{className:`col-span-3 text-left px-2`,children:`Container No.`}),(0,F.jsx)(`div`,{className:`col-span-2 text-left`,children:`Size`}),(0,F.jsx)(`div`,{className:`col-span-3 text-left`,children:`Type`}),(0,F.jsx)(`div`,{className:`col-span-2 text-left`,children:`Owner`}),(0,F.jsx)(`div`,{className:`col-span-2 text-center`,children:`Status`})]}),(0,F.jsx)(`div`,{className:`divide-y divide-slate-100`,children:n?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`Loading containers...`}):f.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No containers found.`}):g.map(e=>{let t=v(e.status);return(0,F.jsxs)(`div`,{onClick:()=>y(e),className:`
+                        grid
+                        grid-cols-12
+                        items-center
+                        px-5
+                        py-3
+                        hover:bg-slate-50
+                        cursor-pointer
+                        transition-all
+                      `,children:[(0,F.jsxs)(`div`,{className:`col-span-3 flex items-center gap-3 px-2`,children:[(0,F.jsx)(`div`,{className:`
+                            w-8
+                            h-8
+                            rounded-lg
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                            ${t.icon}
+                          `,children:(0,F.jsx)(li,{size:16})}),(0,F.jsx)(`div`,{className:`font-semibold text-[#0B2257] text-[13px] truncate`,children:e.container_number})]}),(0,F.jsx)(`div`,{className:`col-span-2 text-left text-[13px] text-slate-600`,children:e.size?`${e.size} FT`:`-`}),(0,F.jsx)(`div`,{className:`col-span-3 text-left text-[13px] text-slate-600 truncate`,children:e.item}),(0,F.jsxs)(`div`,{className:`col-span-2 flex items-center gap-2 text-[13px] text-slate-600 min-w-0`,children:[(0,F.jsx)(xi,{size:13,className:`text-slate-400 shrink-0`}),(0,F.jsx)(`span`,{className:`truncate`,children:e.owner_name})]}),(0,F.jsx)(`div`,{className:`col-span-2 flex justify-center`,children:(0,F.jsx)(Ni,{label:e.status,color:t.badge})})]},e.name)})})]}),(0,F.jsx)(`div`,{className:`block md:hidden divide-y divide-slate-100`,children:n?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`Loading containers...`}):f.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No containers found.`}):g.map(e=>{let t=v(e.status);return(0,F.jsxs)(`div`,{onClick:()=>y(e),className:`
+                      p-4
+                      hover:bg-slate-50/80
+                      active:bg-slate-100
+                      cursor-pointer
+                      transition-all
+                      space-y-3
+                    `,children:[(0,F.jsxs)(`div`,{className:`flex items-center justify-between gap-2`,children:[(0,F.jsxs)(`div`,{className:`flex items-center gap-2.5 min-w-0`,children:[(0,F.jsx)(`div`,{className:`
+                            w-8
+                            h-8
+                            rounded-lg
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                            ${t.icon}
+                          `,children:(0,F.jsx)(li,{size:16})}),(0,F.jsx)(`span`,{className:`font-semibold text-[#0B2257] text-sm truncate`,children:e.container_number})]}),(0,F.jsx)(Ni,{label:e.status,color:t.badge})]}),(0,F.jsxs)(`div`,{className:`grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50/80 rounded-lg p-2.5 border border-slate-100`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`text-[10px] uppercase font-semibold text-slate-400 block mb-0.5`,children:`Size & Type`}),(0,F.jsxs)(`span`,{className:`font-medium text-slate-700`,children:[e.size?`${e.size} FT`:`-`,e.item?` • ${e.item}`:``]})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`text-[10px] uppercase font-semibold text-slate-400 block mb-0.5`,children:`Owner`}),(0,F.jsxs)(`div`,{className:`flex items-center gap-1 font-medium text-slate-700 truncate`,children:[(0,F.jsx)(xi,{size:12,className:`text-slate-400 shrink-0`}),(0,F.jsx)(`span`,{className:`truncate`,children:e.owner_name||`-`})]})]})]})]},e.name)})})]}),(0,F.jsxs)(`div`,{className:`flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-center sm:text-left`,children:[(0,F.jsxs)(`div`,{className:`text-xs text-slate-500 order-2 sm:order-1`,children:[`Showing`,` `,f.length===0?0:(p-1)*_+1,` `,`to`,` `,Math.min(p*_,f.length),` `,`of `,f.length,` containers`]}),(0,F.jsx)(`div`,{className:`order-1 sm:order-2`,children:(0,F.jsx)(Di,{currentPage:p,totalPages:h,onPageChange:m})})]})]}),o&&(0,F.jsx)(rc,{onClose:()=>s(!1),onCreated:e=>{s(!1),t(t=>[e,...t])}}),u&&c&&(0,F.jsx)(Fi,{container:c,onClose:()=>{d(!1),l(null)}})]})}var ac=function(){var e=N(function*(){try{let e=yield B.get(`/resource/Container Job Card`,{params:{fields:JSON.stringify([`name`]),limit_page_length:20,order_by:`creation desc`}});return console.log(`Container Job Card List Response:`,e.data.data),e.data.data||[]}catch(t){var e;throw console.error(`Error fetching Container Job Card list:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),oc=function(){var e=N(function*(e){try{let t=yield B.get(`/resource/Container Job Card/${encodeURIComponent(e)}`);return console.log(`Job Card Details Response for ${e}:`,t.data.data),t.data.data}catch(n){var t;throw console.error(`Error fetching Job Card Details for ${e}:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),sc=function(){var e=N(function*(){try{let e=(yield B.get(`/resource/Container Job Card`,{params:{fields:JSON.stringify([`name`,`customer`,`creation`]),limit_page_length:5,order_by:`creation desc`}})).data.data||[],t=yield Promise.all(e.map(function(){var e=N(function*(e){let t=yield oc(e.name),n=t.operations||[],r=n.length>0?n[n.length-1].operation_name:`-`;return{name:t.name,customer:t.customer,creation:t.creation,lastOperation:r}});return function(t){return e.apply(this,arguments)}}()));return console.log(`Recent Job Cards:`,t),t}catch(t){var e;throw console.error(`Error fetching Recent Job Cards:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),cc=function(){var e=N(function*(){try{var e,t;let n=yield B.get(`/method/frappe.desk.form.load.getdoctype`,{params:{doctype:`Container Job Card`}}),r=((e=n.data)==null||(e=e.docs)==null?void 0:e[0])||((t=n.data)==null||(t=t.message)==null||(t=t.docs)==null?void 0:t[0]);return console.log(`Container Job Card Meta:`,r),r}catch(e){var n;throw console.error(`Error fetching Container Job Card metadata:`,((n=e.response)==null?void 0:n.data)||e),e}});return function(){return e.apply(this,arguments)}}(),lc=function(){var e=N(function*(e){try{let t=yield B.post(`/resource/Container Job Card`,e);return console.log(`Job Card Created:`,t.data.data),t.data.data}catch(e){var t;throw console.error(`Error creating Job Card:`,((t=e.response)==null?void 0:t.data)||e),e}});return function(t){return e.apply(this,arguments)}}(),uc=function(){var e=N(function*(e,t){try{console.log(`Creating ${e}:`,JSON.stringify(t,null,2));let n=yield B.post(`/resource/${encodeURIComponent(e)}`,t);return console.log(`Created ${e}:`,n.data.data),n.data.data}catch(t){var n;throw console.error(`Error creating ${e} document:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t,n){return e.apply(this,arguments)}}(),dc=function(){var e=N(function*(e){try{let t=yield B.post(`/method/frappe.client.submit`,{doc:e});return console.log(`Submitted ${e.doctype}:`,t.data.message||t.data),t.data.message||t.data}catch(n){var t;throw console.error(`Error submitting ${e.doctype} document:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),fc=function(){var e=N(function*(e,t){let n=yield uc(e,t);return[`Quotation`,`Sales Invoice`].includes(e)?yield dc(n):n});return function(t,n){return e.apply(this,arguments)}}();(function(){var e=N(function*(e,t,n){try{let r=new FormData;r.append(`file`,e),r.append(`doctype`,t),r.append(`docname`,n),r.append(`is_private`,0);let i=yield B.post(`/api/method/upload_file`,r,{headers:{"Content-Type":`multipart/form-data`}});return console.log(`File uploaded:`,i.data),i.data.message}catch(e){var r;throw console.error(`Error uploading file:`,((r=e.response)==null?void 0:r.data)||e),e}});return function(t,n,r){return e.apply(this,arguments)}})(),k();var pc=[`name`,`naming_series`,`amended_from`,`owner`,`creation`,`modified`,`modified_by`,`docstatus`,`idx`,`parent`,`parentfield`,`parenttype`],mc=[`Data`,`Small Text`,`Text`,`Select`,`Date`,`Datetime`,`Check`,`Link`,`Table`];function hc({onClose:e,onCreated:t}){let[n,r]=(0,A.useState)([]),[i,a]=(0,A.useState)(null),[o,s]=(0,A.useState)({}),[c,l]=(0,A.useState)([]),[u,d]=(0,A.useState)(!0),[f,p]=(0,A.useState)(!1),[m,h]=(0,A.useState)([]);(0,A.useEffect)(()=>{g(),y()},[]);let g=function(){var e=N(function*(){try{d(!0);let e=yield cc(),t=new Set,n=e.fields.filter(e=>mc.includes(e.fieldtype)&&e.fieldname&&!e.hidden&&!e.read_only&&!e.is_virtual&&!pc.includes(e.fieldname)).filter(e=>t.has(e.fieldname)?!1:(t.add(e.fieldname),!0)),i=n.filter(e=>e.fieldtype!==`Table`),o=n.find(e=>e.fieldtype===`Table`);r(i),a(o);let c={};i.forEach(e=>{e.fieldtype===`Check`?c[e.fieldname]=0:c[e.fieldname]=e.default||``}),s(c)}catch(e){console.error(e)}finally{d(!1)}});return function(){return e.apply(this,arguments)}}(),_=(0,A.useMemo)(()=>n.filter(e=>e.fieldtype!==`Table`),[n]),v=(e,t)=>{s(n=>O(O({},n),{},{[e]:t}))},y=function(){var e=N(function*(){try{let e=yield $s();console.log(`Available Containers:`,e),h(e)}catch(e){console.error(`Error loading containers:`,e)}});return function(){return e.apply(this,arguments)}}(),b=function(){var e=N(function*(e,t){try{if(l(n=>{let r=[...n];return r[e]=O(O({},r[e]),{},{container:t,container_owner:``,type:``}),r}),!t)return;let n=yield ec(t);console.log(`Selected Container Details:`,n),l(r=>{let i=[...r];return i[e]=O(O({},i[e]),{},{container:t,container_owner:n.owner_name||``,type:n.item||``}),i})}catch(e){console.error(`Failed to fetch container details:`,e)}});return function(t,n){return e.apply(this,arguments)}}(),x=()=>{l(e=>[...e,{}])},S=e=>{l(t=>t.filter((t,n)=>n!==e))},C=function(){var n=N(function*(n){n.preventDefault();try{p(!0);let n=O({},o);i!=null&&i.fieldname&&(n[i.fieldname]=c);let r=yield lc(n);t==null||t(r),e()}catch(e){console.error(e),alert(`Failed to create Job Card`)}finally{p(!1)}});return function(e){return n.apply(this,arguments)}}(),w=e=>{var t,n;let r=(t=o[e.fieldname])==null?``:t;if(e.fieldtype===`Check`)return(0,F.jsxs)(`label`,{className:`flex items-center gap-3 text-sm font-medium text-gray-700`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:!!r,onChange:t=>v(e.fieldname,+!!t.target.checked),className:`h-4 w-4 rounded border-gray-300`}),e.label]});if(e.fieldtype===`Link`)return(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`label`,{className:Xs,children:e.label}),(0,F.jsx)(Zs,{field:e,value:r,onChange:v})]});if(e.fieldtype===`Select`){var i;let t=((i=e.options)==null||(i=i.split(`
 `))==null?void 0:i.filter(Boolean))||[];return(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`label`,{className:Xs,children:e.label}),(0,F.jsxs)(`select`,{value:r,onChange:t=>v(e.fieldname,t.target.value),className:Js,children:[(0,F.jsxs)(`option`,{value:``,children:[`Select `,e.label]}),t.map(e=>(0,F.jsx)(`option`,{value:e,children:e},e))]})]})}let a=e.fieldtype===`Date`?`date`:e.fieldtype===`Datetime`?`datetime-local`:`text`;if(e.fieldtype===`Small Text`||e.fieldtype===`Text`){var s;return(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`label`,{className:Xs,children:e.label}),(0,F.jsx)(`textarea`,{rows:3,value:r,placeholder:`Enter ${(s=e.label)==null?void 0:s.toLowerCase()}`,onChange:t=>v(e.fieldname,t.target.value),className:Ys})]})}return(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`label`,{className:Xs,children:e.label}),(0,F.jsxs)(`div`,{className:`relative`,children:[e.fieldtype===`Link`&&(0,F.jsx)(mi,{className:`absolute left-3 top-3.5 h-4 w-4 text-gray-400`}),(0,F.jsx)(`input`,{type:a,value:r,placeholder:`Enter ${(n=e.label)==null?void 0:n.toLowerCase()}`,onChange:t=>v(e.fieldname,t.target.value),className:Js})]})]})};return u?(0,F.jsx)(`div`,{className:`fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm`,children:(0,F.jsx)(`div`,{className:`rounded-2xl bg-white px-6 py-5 shadow-xl`,children:`Loading...`})}):(0,F.jsx)(`div`,{className:`fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm`,children:(0,F.jsxs)(`div`,{className:`flex h-[92vh] w-full max-w-7xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl`,children:[(0,F.jsxs)(`div`,{className:`flex items-start justify-between border-b border-gray-100 px-7 py-5`,children:[(0,F.jsxs)(`div`,{className:`flex items-start gap-4`,children:[(0,F.jsx)(`div`,{className:`flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100`,children:(0,F.jsx)(Jr,{className:`h-7 w-7 text-orange-600`})}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`h2`,{className:`text-2xl font-bold text-gray-900`,children:`New Job Card`}),(0,F.jsx)(`p`,{className:`mt-1 text-sm text-gray-500`,children:`Create a job card to schedule transport or storage services for a customer`})]})]}),(0,F.jsx)(`button`,{onClick:e,className:`flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-gray-100`,children:(0,F.jsx)(wi,{className:`h-5 w-5`})})]}),(0,F.jsxs)(`form`,{onSubmit:C,className:`flex min-h-0 flex-1 overflow-hidden`,children:[(0,F.jsx)(`div`,{className:`w-1/2 overflow-y-auto px-8 py-5`,children:(0,F.jsx)(`div`,{className:`grid grid-cols-2 gap-x-6 gap-y-4`,children:_.map(e=>(0,F.jsx)(`div`,{className:e.fieldtype===`Text`||e.fieldtype===`Small Text`?`col-span-2`:``,children:w(e)},e.fieldname))})}),(0,F.jsxs)(`div`,{className:`w-1/2 border-l border-gray-100 bg-gray-50/50 px-6 py-6 overflow-y-auto`,children:[(0,F.jsxs)(`div`,{className:`border-b border-slate-200 pb-4`,children:[(0,F.jsxs)(`div`,{className:`flex items-start justify-between gap-4`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`h3`,{className:`text-lg font-bold text-gray-900`,children:`Containers`}),(0,F.jsx)(`p`,{className:`mt-1 text-sm text-gray-500`,children:`Add container entries for this job card.`})]}),(0,F.jsx)(ki,{onClick:x,variant:`outline`,size:`sm`,icon:(0,F.jsx)(di,{className:`h-4 w-4`}),children:`Add Container`})]}),(0,F.jsxs)(`div`,{className:`mt-6 rounded-xl border border-gray-200 overflow-hidden`,children:[(0,F.jsxs)(`div`,{className:`
   grid
   grid-cols-12
@@ -379,8 +396,9 @@ font-semibold text-slate-500 shrink-0`,children:[(0,F.jsx)(`div`,{children:`© 2
   text-gray-700
   rounded-none
   outline-none
-`})}),(0,F.jsx)(`div`,{className:`col-span-1 flex items-center justify-center`,children:(0,F.jsx)(`button`,{type:`button`,onClick:()=>S(t),className:`flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-red-50 hover:text-red-600`,children:(0,F.jsx)(gi,{className:`h-4 w-4`})})})]},t))]})]})]}),(0,F.jsxs)(`div`,{className:`mt-5 rounded-2xl border border-gray-200 bg-white p-5`,children:[(0,F.jsx)(`h4`,{className:`text-sm font-semibold text-gray-700`,children:`Summary`}),(0,F.jsxs)(`p`,{className:`mt-2 text-sm text-gray-500`,children:[c.filter(e=>e.container&&String(e.container).trim()!==``).length,` `,`container`,c.filter(e=>e.container&&String(e.container).trim()!==``).length===1?``:`s`,` `,`selected`]})]})]})]}),(0,F.jsxs)(`div`,{className:`flex items-center justify-end gap-3 border-t border-gray-100 px-7 py-4`,children:[(0,F.jsx)(ki,{variant:`secondary`,onClick:e,children:`Cancel`}),(0,F.jsx)(ki,{type:`submit`,onClick:C,loading:f,children:`Save Job Card`})]})]})})}function gc(){let[e,t]=(0,A.useState)(!0),[n,r]=(0,A.useState)([]),[i,a]=(0,A.useState)(``),[o,s]=(0,A.useState)(!1),c=Nt();(0,A.useEffect)(()=>{(function(){var e=N(function*(){try{let e=yield ac();console.log(`Job Card List:`,e);let t=yield Promise.all(e.map(e=>oc(e.name)));console.log(`All Job Card Details:`,t),r(t.map(e=>{var t,n;let r=(t=e.operations)==null?void 0:t[e.operations.length-1],i=(n=e.container)!=null&&n.some(e=>e.status===`Invoiced`)?`Paid`:`Unpaid`;return{id:e.name,customer:e.customer,serviceType:e.service_type,status:(r==null?void 0:r.operation_name)||`Pending`,operationDate:r==null?void 0:r.time,containers:e.container||[],invoiceStatus:i}}))}catch(e){console.error(`Error fetching job cards:`,e)}finally{t(!1)}});return function(){return e.apply(this,arguments)}})()()},[]);let l=n.filter(e=>{var t,n,r;let a=i.toLowerCase();return((t=e.id)==null?void 0:t.toLowerCase().includes(a))||((n=e.customer)==null?void 0:n.toLowerCase().includes(a))||((r=e.status)==null?void 0:r.toLowerCase().includes(a))}),{currentPage:u,setCurrentPage:d,totalPages:f,paginatedData:p,pageSize:m}=Oi(l);(0,A.useEffect)(()=>{d(1)},[i]);let h=e=>{switch(e){case`Gate Out`:return{badge:`bg-green-100 text-green-700`,accent:`bg-green-500`,icon:vi};case`Gate In`:return{badge:`bg-blue-100 text-blue-700`,accent:`bg-blue-500`,icon:Ci};case`Quotation`:return{badge:`bg-orange-100 text-orange-700`,accent:`bg-orange-500`,icon:Jr};case`Sales Invoice`:return{badge:`bg-purple-100 text-purple-700`,accent:`bg-purple-500`,icon:ti};case`Equipment Interchange Receipt`:return{badge:`bg-teal-100 text-teal-700`,accent:`bg-teal-500`,icon:Jr};case`Pickup Docket`:return{badge:`bg-pink-100 text-pink-700`,accent:`bg-pink-500`,icon:vi};case`Delivery Docket`:return{badge:`bg-emerald-100 text-emerald-700`,accent:`bg-emerald-500`,icon:vi};default:return{badge:`bg-slate-100 text-slate-700`,accent:`bg-slate-400`,icon:Jr}}};return(0,F.jsxs)(Mi,{title:`Job Cards`,description:`Manage and track all your job cards in one place.`,children:[(0,F.jsxs)(`div`,{className:`max-w-[1300px] mx-auto space-y-4`,children:[(0,F.jsxs)(`div`,{className:`flex justify-between items-center`,children:[(0,F.jsx)(`div`,{className:`flex gap-3`,children:(0,F.jsxs)(`div`,{className:`
-                w-[280px]
+`})}),(0,F.jsx)(`div`,{className:`col-span-1 flex items-center justify-center`,children:(0,F.jsx)(`button`,{type:`button`,onClick:()=>S(t),className:`flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-red-50 hover:text-red-600`,children:(0,F.jsx)(gi,{className:`h-4 w-4`})})})]},t))]})]})]}),(0,F.jsxs)(`div`,{className:`mt-5 rounded-2xl border border-gray-200 bg-white p-5`,children:[(0,F.jsx)(`h4`,{className:`text-sm font-semibold text-gray-700`,children:`Summary`}),(0,F.jsxs)(`p`,{className:`mt-2 text-sm text-gray-500`,children:[c.filter(e=>e.container&&String(e.container).trim()!==``).length,` `,`container`,c.filter(e=>e.container&&String(e.container).trim()!==``).length===1?``:`s`,` `,`selected`]})]})]})]}),(0,F.jsxs)(`div`,{className:`flex items-center justify-end gap-3 border-t border-gray-100 px-7 py-4`,children:[(0,F.jsx)(ki,{variant:`secondary`,onClick:e,children:`Cancel`}),(0,F.jsx)(ki,{type:`submit`,onClick:C,loading:f,children:`Save Job Card`})]})]})})}function gc(){let[e,t]=(0,A.useState)(!0),[n,r]=(0,A.useState)([]),[i,a]=(0,A.useState)(``),[o,s]=(0,A.useState)(!1),c=Nt();(0,A.useEffect)(()=>{(function(){var e=N(function*(){try{let e=yield ac();console.log(`Job Card List:`,e);let t=yield Promise.all(e.map(e=>oc(e.name)));console.log(`All Job Card Details:`,t),r(t.map(e=>{var t,n;let r=(t=e.operations)==null?void 0:t[e.operations.length-1],i=(n=e.container)!=null&&n.some(e=>e.status===`Invoiced`)?`Paid`:`Unpaid`;return{id:e.name,customer:e.customer,serviceType:e.service_type,status:(r==null?void 0:r.operation_name)||`Pending`,operationDate:r==null?void 0:r.time,containers:e.container||[],invoiceStatus:i}}))}catch(e){console.error(`Error fetching job cards:`,e)}finally{t(!1)}});return function(){return e.apply(this,arguments)}})()()},[]);let l=n.filter(e=>{var t,n,r;let a=i.toLowerCase();return((t=e.id)==null?void 0:t.toLowerCase().includes(a))||((n=e.customer)==null?void 0:n.toLowerCase().includes(a))||((r=e.status)==null?void 0:r.toLowerCase().includes(a))}),{currentPage:u,setCurrentPage:d,totalPages:f,paginatedData:p,pageSize:m}=Oi(l);(0,A.useEffect)(()=>{d(1)},[i]);let h=e=>{switch(e){case`Gate Out`:return{badge:`bg-green-100 text-green-700`,accent:`bg-green-500`,icon:vi};case`Gate In`:return{badge:`bg-blue-100 text-blue-700`,accent:`bg-blue-500`,icon:Ci};case`Quotation`:return{badge:`bg-orange-100 text-orange-700`,accent:`bg-orange-500`,icon:Jr};case`Sales Invoice`:return{badge:`bg-purple-100 text-purple-700`,accent:`bg-purple-500`,icon:ti};case`Equipment Interchange Receipt`:return{badge:`bg-teal-100 text-teal-700`,accent:`bg-teal-500`,icon:Jr};case`Pickup Docket`:return{badge:`bg-pink-100 text-pink-700`,accent:`bg-pink-500`,icon:vi};case`Delivery Docket`:return{badge:`bg-emerald-100 text-emerald-700`,accent:`bg-emerald-500`,icon:vi};default:return{badge:`bg-slate-100 text-slate-700`,accent:`bg-slate-400`,icon:Jr}}};return(0,F.jsxs)(Mi,{title:`Job Cards`,description:`Manage and track all your job cards in one place.`,children:[(0,F.jsxs)(`div`,{className:`max-w-[1300px] mx-auto space-y-4`,children:[(0,F.jsxs)(`div`,{className:`flex flex-col sm:flex-row gap-3 justify-between items-stretch sm:items-center`,children:[(0,F.jsx)(`div`,{className:`flex gap-3`,children:(0,F.jsxs)(`div`,{className:`
+                w-full
+                sm:w-[280px]
                 h-10
                 bg-white
                 rounded-lg
@@ -394,75 +412,111 @@ font-semibold text-slate-500 shrink-0`,children:[(0,F.jsx)(`div`,{children:`© 2
                   flex-1
                   outline-none
                   text-xs
-                `})]})}),(0,F.jsx)(ki,{icon:(0,F.jsx)(di,{size:16}),onClick:()=>s(!0),children:`New Job Card`})]}),(0,F.jsxs)(`div`,{className:`bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden`,children:[(0,F.jsxs)(`div`,{className:`
-              grid
-              grid-cols-[4px_1.8fr_1.2fr_2.8fr_1.2fr_40px]
-              bg-slate-50
-              border-b
-              border-slate-200
-              py-3
-              px-4
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-wider
-              text-slate-400
-            `,children:[(0,F.jsx)(`div`,{}),(0,F.jsx)(`div`,{className:`text-left px-2`,children:`Job Card`}),(0,F.jsx)(`div`,{className:`text-left`,children:`Customer`}),(0,F.jsx)(`div`,{className:`text-left`,children:`Containers`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Last Operation`}),(0,F.jsx)(`div`,{})]}),(0,F.jsx)(`div`,{className:`divide-y divide-slate-100`,children:l.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No job cards found.`}):p.map(e=>{var t,n;let r=h(e.status),i=r.icon;return(0,F.jsxs)(`div`,{className:`
-                      grid
-                      grid-cols-[4px_1.8fr_1.2fr_2.8fr_1.2fr_40px]
-                      items-center
-                      hover:bg-slate-50/50
-                      transition
-                      cursor-pointer
-                    `,onClick:()=>c(`/job-cards/${encodeURIComponent(e.id)}`),children:[(0,F.jsx)(`div`,{className:`${r.accent} self-stretch w-1`}),(0,F.jsxs)(`div`,{className:`flex items-center gap-3 px-2 py-2.5`,children:[(0,F.jsx)(`div`,{className:`
-                          w-8
-                          h-8
-                          rounded-lg
-                          bg-slate-50
-                          flex
-                          items-center
-                          justify-center
-                          shrink-0
-                        `,children:(0,F.jsx)(i,{size:16,className:`text-[#006B82]`})}),(0,F.jsx)(`div`,{className:`min-w-0`,children:(0,F.jsx)(`h2`,{className:`
-                          text-[13px]
-                          font-bold
-                          text-[#006B82]
-                        `,children:e.id})})]}),(0,F.jsx)(`div`,{className:`text-left text-[13px] text-slate-600 truncate pr-3`,children:e.customer}),(0,F.jsxs)(`div`,{className:`px-3 py-2`,children:[(0,F.jsxs)(`div`,{className:`
-                          grid
-                          grid-cols-[2fr_1.5fr_60px_100px_60px]
-                          gap-2
-                          text-[9px]
-                          uppercase
-                          tracking-wider
-                          text-slate-400
-                          mb-1
-                          text-left
-                        `,children:[(0,F.jsx)(`div`,{children:`Container No.`}),(0,F.jsx)(`div`,{children:`Owner`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Size`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Status`}),(0,F.jsx)(`div`,{children:`Type`})]}),(0,F.jsx)(`div`,{className:`space-y-0.5`,children:(t=e.containers)==null?void 0:t.slice(0,2).map(e=>(0,F.jsxs)(`div`,{className:`
-                              grid
-                              grid-cols-[2fr_1.5fr_60px_100px_60px]
-                              gap-2
-                              text-[11px]
+                `})]})}),(0,F.jsx)(ki,{icon:(0,F.jsx)(di,{size:16}),onClick:()=>s(!0),className:`w-full sm:w-auto justify-center`,children:`New Job Card`})]}),(0,F.jsxs)(`div`,{className:`bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden`,children:[(0,F.jsxs)(`div`,{className:`hidden lg:block`,children:[(0,F.jsxs)(`div`,{className:`
+                grid
+                grid-cols-[4px_1.8fr_1.2fr_2.8fr_1.2fr_40px]
+                bg-slate-50
+                border-b
+                border-slate-200
+                py-3
+                px-4
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-wider
+                text-slate-400
+              `,children:[(0,F.jsx)(`div`,{}),(0,F.jsx)(`div`,{className:`text-left px-2`,children:`Job Card`}),(0,F.jsx)(`div`,{className:`text-left`,children:`Customer`}),(0,F.jsx)(`div`,{className:`text-left`,children:`Containers`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Last Operation`}),(0,F.jsx)(`div`,{})]}),(0,F.jsx)(`div`,{className:`divide-y divide-slate-100`,children:e?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`Loading job cards...`}):l.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No job cards found.`}):p.map(e=>{var t,n;let r=h(e.status),i=r.icon;return(0,F.jsxs)(`div`,{className:`
+                        grid
+                        grid-cols-[4px_1.8fr_1.2fr_2.8fr_1.2fr_40px]
+                        items-center
+                        hover:bg-slate-50/50
+                        transition
+                        cursor-pointer
+                      `,onClick:()=>c(`/job-cards/${encodeURIComponent(e.id)}`),children:[(0,F.jsx)(`div`,{className:`${r.accent} self-stretch w-1`}),(0,F.jsxs)(`div`,{className:`flex items-center gap-3 px-2 py-2.5`,children:[(0,F.jsx)(`div`,{className:`
+                            w-8
+                            h-8
+                            rounded-lg
+                            bg-slate-50
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                          `,children:(0,F.jsx)(i,{size:16,className:`text-[#006B82]`})}),(0,F.jsx)(`div`,{className:`min-w-0`,children:(0,F.jsx)(`h2`,{className:`
+                              text-[13px]
+                              font-bold
+                              text-[#006B82]
+                              truncate
+                            `,children:e.id})})]}),(0,F.jsx)(`div`,{className:`text-left text-[13px] text-slate-600 truncate pr-3`,children:e.customer}),(0,F.jsxs)(`div`,{className:`px-3 py-2 min-w-0`,children:[(0,F.jsxs)(`div`,{className:`
+                            grid
+                            grid-cols-[2fr_1.5fr_60px_100px_60px]
+                            gap-2
+                            text-[9px]
+                            uppercase
+                            tracking-wider
+                            text-slate-400
+                            mb-1
+                            text-left
+                          `,children:[(0,F.jsx)(`div`,{children:`Container No.`}),(0,F.jsx)(`div`,{children:`Owner`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Size`}),(0,F.jsx)(`div`,{className:`text-center`,children:`Status`}),(0,F.jsx)(`div`,{children:`Type`})]}),(0,F.jsx)(`div`,{className:`space-y-0.5`,children:(t=e.containers)==null?void 0:t.slice(0,2).map(e=>(0,F.jsxs)(`div`,{className:`
+                                grid
+                                grid-cols-[2fr_1.5fr_60px_100px_60px]
+                                gap-2
+                                text-[11px]
+                                items-center
+                                text-left
+                                text-slate-600
+                              `,children:[(0,F.jsx)(`div`,{className:`truncate`,children:e.container}),(0,F.jsx)(`div`,{className:`truncate`,children:e.container_owner||e.owner_name||`N/A`}),(0,F.jsx)(`div`,{className:`text-center font-medium text-slate-700`,children:e.size||`-`}),(0,F.jsx)(`div`,{className:`flex justify-center`,children:(0,F.jsx)(`span`,{className:`
+                                    inline-flex
+                                    rounded-full
+                                    px-1.5
+                                    py-0.2
+                                    text-[9px]
+                                    font-semibold
+                                    ${e.status===`Available`?`bg-green-100 text-green-700`:e.status===`Quoted`?`bg-blue-100 text-blue-700`:e.status===`Picked Up`?`bg-amber-100 text-amber-700`:e.status===`In Transit`?`bg-purple-100 text-purple-700`:e.status===`Delivered`?`bg-emerald-100 text-emerald-700`:e.status===`Rent`?`bg-cyan-100 text-cyan-700`:`bg-slate-100 text-slate-700`}
+                                  `,children:e.status||`N/A`})}),(0,F.jsx)(`div`,{className:`truncate`,children:e.type})]},e.name))}),((n=e.containers)==null?void 0:n.length)>2&&(0,F.jsxs)(`div`,{className:`mt-1 text-[10px] font-semibold text-[#006B82]`,children:[`+`,e.containers.length-2,` more`]})]}),(0,F.jsx)(`div`,{className:`flex flex-col justify-center text-center px-2`,children:(0,F.jsx)(`div`,{className:`flex justify-center`,children:(0,F.jsx)(`span`,{className:`
+                              inline-flex
                               items-center
-                              text-left
-                              text-slate-600
-                            `,children:[(0,F.jsx)(`div`,{className:`truncate`,children:e.container}),(0,F.jsx)(`div`,{className:`truncate`,children:e.container_owner||e.owner_name||`N/A`}),(0,F.jsx)(`div`,{className:`text-center font-medium text-slate-700`,children:e.size||`-`}),(0,F.jsx)(`div`,{className:`flex justify-center`,children:(0,F.jsx)(`span`,{className:`
-                                  inline-flex
-                                  rounded-full
-                                  px-1.5
-                                  py-0.2
-                                  text-[9px]
-                                  font-semibold
-                                  ${e.status===`Available`?`bg-green-100 text-green-700`:e.status===`Quoted`?`bg-blue-100 text-blue-700`:e.status===`Picked Up`?`bg-amber-100 text-amber-700`:e.status===`In Transit`?`bg-purple-100 text-purple-700`:e.status===`Delivered`?`bg-emerald-100 text-emerald-700`:e.status===`Rent`?`bg-cyan-100 text-cyan-700`:`bg-slate-100 text-slate-700`}
-                                `,children:e.status||`N/A`})}),(0,F.jsx)(`div`,{className:`truncate`,children:e.type})]},e.name))}),((n=e.containers)==null?void 0:n.length)>2&&(0,F.jsxs)(`div`,{className:`mt-1 text-[10px] font-semibold text-[#006B82]`,children:[`+`,e.containers.length-2,` more`]})]}),(0,F.jsx)(`div`,{className:`flex flex-col justify-center text-center px-2`,children:(0,F.jsx)(`div`,{className:`flex justify-center`,children:(0,F.jsx)(`span`,{className:`
-      inline-flex
-      items-center
-      rounded-full
-      px-2.5
-      py-1
-      text-[10px]
-      font-semibold
-      ${r.badge}
-    `,children:e.status})})}),(0,F.jsx)(`div`,{className:`flex items-center justify-center`,children:(0,F.jsx)(qr,{size:16,className:`text-slate-400 group-hover:text-slate-600`})})]},e.id)})})]}),(0,F.jsxs)(`div`,{className:`flex items-center justify-between pt-2`,children:[(0,F.jsxs)(`div`,{className:`text-xs text-slate-500`,children:[`Showing`,` `,l.length===0?0:(u-1)*m+1,` `,`to`,` `,Math.min(u*m,l.length),` `,`of `,l.length,` results`]}),(0,F.jsx)(Di,{currentPage:u,totalPages:f,onPageChange:d})]})]}),o&&(0,F.jsx)(hc,{onClose:()=>s(!1),onCreated:e=>{s(!1),c(`/job-cards/${encodeURIComponent(e.name)}`)}})]})}var _c=function(){var e=N(function*(){try{let e=yield B.get(`/resource/Sales Invoice`,{params:{fields:JSON.stringify([`name`,`customer`,`posting_date`,`grand_total`,`status`,`docstatus`]),limit_page_length:100,order_by:`creation desc`}});return console.log(`Sales Invoice List Response:`,e.data.data),e.data.data||[]}catch(t){var e;throw console.error(`Error fetching Sales Invoices:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),vc=function(){var e=N(function*(e){try{let t=yield B.get(`/resource/Sales Invoice/${encodeURIComponent(e)}`);return console.log(`Sales Invoice Details Response for ${e}:`,t.data.data),t.data.data}catch(n){var t;throw console.error(`Error fetching Sales Invoice ${e}:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),yc=function(){var e=N(function*(){try{return(yield B.get(`/resource/Operation Type`,{params:{fields:JSON.stringify([`name`,`creation`,`modified`]),limit_page_length:1e3,order_by:`creation asc`}})).data.data||[]}catch(t){var e;throw console.error(`Error fetching Operation Types:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),bc=function(){var e=N(function*(e,t=100){try{let n=e;(e===`Pickup Docket`||e===`Delivery Docket`)&&(n=`Pickup and Delivery Docket`);let r=yield B.get(`/resource/${encodeURIComponent(n)}`,{params:{fields:JSON.stringify([`*`]),limit_page_length:t,order_by:`creation desc`}});return console.log(`${e} Records:`,r.data.data),r.data.data||[]}catch(t){var n;throw console.error(`Error fetching ${e}:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t){return e.apply(this,arguments)}}(),xc=function(){var e=N(function*(e,t){try{let n=e;(e===`Pickup Docket`||e===`Delivery Docket`)&&(n=`Pickup and Delivery Docket`);let r=yield B.get(`/resource/${encodeURIComponent(n)}/${encodeURIComponent(t)}`);return console.log(`${e} Details:`,r.data.data),r.data.data}catch(t){var n;throw console.error(`Error fetching ${e} details:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t,n){return e.apply(this,arguments)}}();function Sc(e){return Cc.apply(this,arguments)}function Cc(){return Cc=N(function*(e){let t=[];for(let n of e.container){let r=n.container_number||n.container,i=e.operations.filter(e=>e.containers===r),a=i.find(e=>e.operation_type===`Gate In`),o=i.find(e=>e.operation_type===`Gate Out`),s=i.find(e=>e.operation_type===`Sales Invoice`);if(a&&!o&&t.push(`${r}: Gate Out missing`),a&&o&&!s&&t.push(`${r}: Sales Invoice missing`),s){let e=yield vc(s.operation);Number(e.outstanding_amount)>0&&t.push(`${r}: Outstanding invoice amount exists`)}if(a&&o){let e=new Date(a.time);new Date(o.time)<e&&((yield xc(`Gate In`,a.operation)).storage_start||t.push(`${r}: Storage Start not set`))}}return{valid:t.length===0,errors:t}}),Cc.apply(this,arguments)}function wc({open:e,title:t=`Alert`,message:n,onClose:r}){return e?(0,F.jsx)(`div`,{className:`
+                              rounded-full
+                              px-2.5
+                              py-1
+                              text-[10px]
+                              font-semibold
+                              ${r.badge}
+                            `,children:e.status})})}),(0,F.jsx)(`div`,{className:`flex items-center justify-center`,children:(0,F.jsx)(qr,{size:16,className:`text-slate-400 group-hover:text-slate-600`})})]},e.id)})})]}),(0,F.jsx)(`div`,{className:`block lg:hidden divide-y divide-slate-100`,children:e?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`Loading job cards...`}):l.length===0?(0,F.jsx)(`div`,{className:`p-6 text-center text-sm text-slate-500`,children:`No job cards found.`}):p.map(e=>{let t=h(e.status),n=t.icon;return(0,F.jsxs)(`div`,{className:`
+                      p-4
+                      border-l-4
+                      ${t.accent.replace(`bg-`,`border-`)}
+                      hover:bg-slate-50/80
+                      active:bg-slate-100
+                      transition-all
+                      cursor-pointer
+                      space-y-3
+                    `,onClick:()=>c(`/job-cards/${encodeURIComponent(e.id)}`),children:[(0,F.jsxs)(`div`,{className:`flex items-center justify-between gap-2`,children:[(0,F.jsxs)(`div`,{className:`flex items-center gap-2.5 min-w-0`,children:[(0,F.jsx)(`div`,{className:`
+                            w-8
+                            h-8
+                            rounded-lg
+                            bg-slate-100
+                            flex
+                            items-center
+                            justify-center
+                            shrink-0
+                          `,children:(0,F.jsx)(n,{size:16,className:`text-[#006B82]`})}),(0,F.jsxs)(`div`,{className:`min-w-0`,children:[(0,F.jsx)(`h2`,{className:`text-sm font-bold text-[#006B82] truncate`,children:e.id}),(0,F.jsx)(`div`,{className:`text-xs text-slate-500 truncate`,children:e.customer})]})]}),(0,F.jsxs)(`div`,{className:`flex items-center gap-1.5 shrink-0`,children:[(0,F.jsx)(`span`,{className:`
+                            inline-flex
+                            items-center
+                            rounded-full
+                            px-2.5
+                            py-0.5
+                            text-[10px]
+                            font-semibold
+                            ${t.badge}
+                          `,children:e.status}),(0,F.jsx)(qr,{size:16,className:`text-slate-400`})]})]}),e.containers&&e.containers.length>0&&(0,F.jsxs)(`div`,{className:`bg-slate-50/80 rounded-lg p-2.5 border border-slate-100 space-y-1.5 text-xs`,children:[(0,F.jsx)(`div`,{className:`text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex justify-between items-center`,children:(0,F.jsxs)(`span`,{children:[`Containers (`,e.containers.length,`)`]})}),(0,F.jsx)(`div`,{className:`space-y-1`,children:e.containers.slice(0,2).map(e=>(0,F.jsxs)(`div`,{className:`flex items-center justify-between gap-2 text-slate-600 text-xs`,children:[(0,F.jsxs)(`div`,{className:`flex items-center gap-1.5 min-w-0`,children:[(0,F.jsx)(`span`,{className:`font-medium text-slate-700 truncate`,children:e.container}),e.size&&(0,F.jsxs)(`span`,{className:`text-[10px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded font-medium shrink-0`,children:[e.size,` FT`]})]}),(0,F.jsxs)(`div`,{className:`flex items-center gap-2 shrink-0`,children:[(0,F.jsx)(`span`,{className:`text-slate-500 text-[11px] truncate max-w-[90px]`,children:e.container_owner||e.owner_name||``}),(0,F.jsx)(`span`,{className:`
+                                    inline-flex
+                                    rounded-full
+                                    px-1.5
+                                    py-0.2
+                                    text-[9px]
+                                    font-semibold
+                                    ${e.status===`Available`?`bg-green-100 text-green-700`:e.status===`Quoted`?`bg-blue-100 text-blue-700`:e.status===`Picked Up`?`bg-amber-100 text-amber-700`:e.status===`In Transit`?`bg-purple-100 text-purple-700`:e.status===`Delivered`?`bg-emerald-100 text-emerald-700`:e.status===`Rent`?`bg-cyan-100 text-cyan-700`:`bg-slate-100 text-slate-700`}
+                                  `,children:e.status||`N/A`})]})]},e.name))}),e.containers.length>2&&(0,F.jsxs)(`div`,{className:`text-[10px] font-semibold text-[#006B82] pt-0.5`,children:[`+`,e.containers.length-2,` more containers`]})]})]},e.id)})})]}),(0,F.jsxs)(`div`,{className:`flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-center sm:text-left`,children:[(0,F.jsxs)(`div`,{className:`text-xs text-slate-500 order-2 sm:order-1`,children:[`Showing`,` `,l.length===0?0:(u-1)*m+1,` `,`to`,` `,Math.min(u*m,l.length),` `,`of `,l.length,` results`]}),(0,F.jsx)(`div`,{className:`order-1 sm:order-2`,children:(0,F.jsx)(Di,{currentPage:u,totalPages:f,onPageChange:d})})]})]}),o&&(0,F.jsx)(hc,{onClose:()=>s(!1),onCreated:e=>{s(!1),c(`/job-cards/${encodeURIComponent(e.name)}`)}})]})}var _c=function(){var e=N(function*(){try{let e=yield B.get(`/resource/Sales Invoice`,{params:{fields:JSON.stringify([`name`,`customer`,`posting_date`,`grand_total`,`status`,`docstatus`]),limit_page_length:100,order_by:`creation desc`}});return console.log(`Sales Invoice List Response:`,e.data.data),e.data.data||[]}catch(t){var e;throw console.error(`Error fetching Sales Invoices:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),vc=function(){var e=N(function*(e){try{let t=yield B.get(`/resource/Sales Invoice/${encodeURIComponent(e)}`);return console.log(`Sales Invoice Details Response for ${e}:`,t.data.data),t.data.data}catch(n){var t;throw console.error(`Error fetching Sales Invoice ${e}:`,((t=n.response)==null?void 0:t.data)||n),n}});return function(t){return e.apply(this,arguments)}}(),yc=function(){var e=N(function*(){try{return(yield B.get(`/resource/Operation Type`,{params:{fields:JSON.stringify([`name`,`creation`,`modified`]),limit_page_length:1e3,order_by:`creation asc`}})).data.data||[]}catch(t){var e;throw console.error(`Error fetching Operation Types:`,((e=t.response)==null?void 0:e.data)||t),t}});return function(){return e.apply(this,arguments)}}(),bc=function(){var e=N(function*(e,t=100){try{let n=e;(e===`Pickup Docket`||e===`Delivery Docket`)&&(n=`Pickup and Delivery Docket`);let r=yield B.get(`/resource/${encodeURIComponent(n)}`,{params:{fields:JSON.stringify([`*`]),limit_page_length:t,order_by:`creation desc`}});return console.log(`${e} Records:`,r.data.data),r.data.data||[]}catch(t){var n;throw console.error(`Error fetching ${e}:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t){return e.apply(this,arguments)}}(),xc=function(){var e=N(function*(e,t){try{let n=e;(e===`Pickup Docket`||e===`Delivery Docket`)&&(n=`Pickup and Delivery Docket`);let r=yield B.get(`/resource/${encodeURIComponent(n)}/${encodeURIComponent(t)}`);return console.log(`${e} Details:`,r.data.data),r.data.data}catch(t){var n;throw console.error(`Error fetching ${e} details:`,((n=t.response)==null?void 0:n.data)||t),t}});return function(t,n){return e.apply(this,arguments)}}();function Sc(e){return Cc.apply(this,arguments)}function Cc(){return Cc=N(function*(e){let t=[];for(let n of e.container){let r=n.container_number||n.container,i=e.operations.filter(e=>e.containers===r),a=i.find(e=>e.operation_type===`Gate In`),o=i.find(e=>e.operation_type===`Gate Out`),s=i.find(e=>e.operation_type===`Sales Invoice`);if(a&&!o&&t.push(`${r}: Gate Out missing`),a&&o&&!s&&t.push(`${r}: Sales Invoice missing`),s){let e=yield vc(s.operation);Number(e.outstanding_amount)>0&&t.push(`${r}: Outstanding invoice amount exists`)}if(a&&o){let e=new Date(a.time);new Date(o.time)<e&&((yield xc(`Gate In`,a.operation)).storage_start||t.push(`${r}: Storage Start not set`))}}return{valid:t.length===0,errors:t}}),Cc.apply(this,arguments)}function wc({open:e,title:t=`Alert`,message:n,onClose:r}){return e?(0,F.jsx)(`div`,{className:`
         fixed
         inset-0
         z-[9999]
