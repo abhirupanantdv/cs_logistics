@@ -50,7 +50,7 @@ export default function CustomerDetailsModal({
         bg-slate-900/50
         backdrop-blur-sm
         flex items-center justify-center
-        p-4
+        p-2 sm:p-4
       "
     >
       <div
@@ -60,14 +60,14 @@ export default function CustomerDetailsModal({
           shadow-2xl
           w-full
           max-w-6xl
-          max-h-[90vh]
+          max-h-[92vh] sm:max-h-[90vh]
           overflow-hidden
         "
       >
         {/* Header */}
         <div
           className="
-            px-6 py-4
+            px-4 py-3.5 sm:px-6 sm:py-4
             border-b
             border-slate-200
             flex
@@ -75,25 +75,26 @@ export default function CustomerDetailsModal({
             justify-between
           "
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 min-w-0">
             <div
               className="
-                w-10 h-10
+                w-9 h-9 sm:w-10 sm:h-10
                 rounded-xl
                 bg-cyan-50
                 text-cyan-600
                 flex items-center justify-center
+                shrink-0
               "
             >
               <Building2 size={20} />
             </div>
 
-            <div>
-              <h2 className="font-semibold text-slate-800">
+            <div className="min-w-0">
+              <h2 className="font-semibold text-slate-800 text-base sm:text-lg truncate">
                 Customer Details
               </h2>
 
-              <p className="text-sm text-slate-500">
+              <p className="text-xs sm:text-sm text-slate-500 truncate">
                 {customer.customer_name ||
                   customer.name}
               </p>
@@ -103,10 +104,12 @@ export default function CustomerDetailsModal({
           <button
             onClick={onClose}
             className="
-              w-9 h-9
-              rounded-lg
+              w-9 h-9 sm:w-10 sm:h-10
+              rounded-xl
               hover:bg-slate-100
               flex items-center justify-center
+              shrink-0
+              transition-all
             "
           >
             <X size={18} />
@@ -116,9 +119,9 @@ export default function CustomerDetailsModal({
         {/* Body */}
         <div
           className="
-            p-5
+            p-4 sm:p-5
             overflow-y-auto
-            max-h-[75vh]
+            max-h-[78vh] sm:max-h-[75vh]
             bg-slate-50/40
           "
         >
@@ -126,7 +129,7 @@ export default function CustomerDetailsModal({
             className="
               grid
               grid-cols-1
-              md:grid-cols-2
+              sm:grid-cols-2
               lg:grid-cols-3
               xl:grid-cols-4
               gap-3
@@ -160,7 +163,7 @@ export default function CustomerDetailsModal({
 
                   <div
                     className="
-                      text-sm
+                      text-xs sm:text-sm
                       text-slate-800
                       break-words
                     "

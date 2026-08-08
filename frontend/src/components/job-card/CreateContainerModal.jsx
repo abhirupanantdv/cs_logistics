@@ -115,19 +115,20 @@ export default function CreateContainerModal({
       className="
         fixed inset-0 z-50
         bg-black/40
+        backdrop-blur-sm
         flex items-center justify-center
-        p-4
+        p-2 sm:p-4
       "
     >
       <div
         className="
           bg-white
-          rounded-xl
+          rounded-2xl
           shadow-xl
           w-full
           max-w-5xl
           overflow-hidden
-          max-h-[90vh]
+          max-h-[92vh] sm:max-h-[90vh]
           flex flex-col
         "
       >
@@ -135,50 +136,52 @@ export default function CreateContainerModal({
         <div
           className="
             flex items-center justify-between
-            px-6 py-4
+            px-4 py-3.5 sm:px-6 sm:py-4
             border-b border-slate-200
+            shrink-0
           "
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 min-w-0">
             <div
               className="
-                w-10 h-10
-                rounded-lg
+                w-9 h-9 sm:w-10 sm:h-10
+                rounded-xl
                 bg-cyan-50
                 flex items-center justify-center
                 text-cyan-600
+                shrink-0
               "
             >
               <Package size={18} />
             </div>
 
-            <div>
-              <h2 className="font-semibold text-slate-800">
+            <div className="min-w-0">
+              <h2 className="font-semibold text-slate-800 text-base sm:text-lg truncate">
                 Create Container
               </h2>
 
-              <p className="text-xs text-slate-500">
-                ERPNext Metadata Driven Form
+              <p className="text-xs text-slate-500 truncate">
+                Add a new container record into the system.
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="text-slate-500 hover:text-slate-700"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-all shrink-0"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6">
           {!meta ? (
             <div className="text-center text-sm text-slate-500">
               Loading form metadata...
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {fields.map((field) => (
                 <MetaField
                   key={field.fieldname}
@@ -203,14 +206,16 @@ export default function CreateContainerModal({
         {/* Footer */}
         <div
           className="
-            px-6 py-4
+            px-4 py-3 sm:px-6 sm:py-4
             border-t border-slate-200
-            flex justify-end gap-3
+            flex flex-col-reverse sm:flex-row justify-end gap-2.5 sm:gap-3
+            shrink-0 bg-white
           "
         >
           <Button
             variant="secondary"
             onClick={onClose}
+            className="w-full sm:w-auto justify-center"
           >
             Cancel
           </Button>
@@ -219,6 +224,7 @@ export default function CreateContainerModal({
             onClick={handleSubmit}
             disabled={!meta}
             loading={loading}
+            className="w-full sm:w-auto justify-center"
           >
             Create Container
           </Button>

@@ -64,7 +64,7 @@ export default function OperationDetailsModal({
         bg-slate-900/50
         backdrop-blur-sm
         flex items-center justify-center
-        p-4
+        p-2 sm:p-4
       "
     >
       <div
@@ -74,7 +74,7 @@ export default function OperationDetailsModal({
           shadow-2xl
           w-full
           max-w-5xl
-          max-h-[90vh]
+          max-h-[92vh] sm:max-h-[90vh]
           overflow-hidden
         "
       >
@@ -82,30 +82,32 @@ export default function OperationDetailsModal({
 
         <div
           className="
-            px-6 py-4
+            px-4 py-3.5 sm:px-6 sm:py-4
             border-b border-slate-200
             flex items-center justify-between
           "
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <div
               className="
-                w-10 h-10
+                w-9 h-9 sm:w-10 sm:h-10
                 rounded-xl
                 bg-[#006B82]/10
                 flex items-center justify-center
                 text-[#006B82]
+                shrink-0
               "
             >
-              <FileText size={22} />
+              <FileText size={20} />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <h2
                 className="
-                  text-lg
+                  text-base sm:text-lg
                   font-semibold
                   text-slate-800
+                  truncate
                 "
               >
                 {operationType}
@@ -113,9 +115,10 @@ export default function OperationDetailsModal({
 
               <p
                 className="
-                  text-sm
+                  text-xs sm:text-sm
                   text-slate-500
-                  mt-1
+                  mt-0.5
+                  truncate
                 "
               >
                 Record ID: {record.name}
@@ -126,14 +129,15 @@ export default function OperationDetailsModal({
           <button
             onClick={onClose}
             className="
-              w-10 h-10
+              w-9 h-9 sm:w-10 sm:h-10
               rounded-xl
               hover:bg-slate-100
               flex items-center justify-center
               transition-all
+              shrink-0
             "
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
@@ -141,19 +145,19 @@ export default function OperationDetailsModal({
 
         <div
           className="
-            p-6
+            p-4 sm:p-6
             overflow-y-auto
-            max-h-[75vh]
+            max-h-[78vh] sm:max-h-[75vh]
             bg-slate-50/40
           "
         >
           {/* Details Section */}
 
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <div
               className="
                 flex items-center gap-2
-                mb-5
+                mb-4 sm:mb-5
               "
             >
               <FileText
@@ -163,7 +167,7 @@ export default function OperationDetailsModal({
 
               <h3
                 className="
-                  text-lg
+                  text-base sm:text-lg
                   font-semibold
                   text-slate-800
                 "
@@ -176,10 +180,10 @@ export default function OperationDetailsModal({
               className="
                 grid
                 grid-cols-1
-                md:grid-cols-2
+                sm:grid-cols-2
                 lg:grid-cols-3
                 xl:grid-cols-4
-                gap-4
+                gap-3 sm:gap-4
               "
             >
               {fields
@@ -214,7 +218,7 @@ export default function OperationDetailsModal({
                   >
                     <div
                       className="
-                        text-[11px]
+                        text-[10px] sm:text-[11px]
                         uppercase
                         tracking-wider
                         text-slate-400
@@ -227,7 +231,7 @@ export default function OperationDetailsModal({
 
                     <div
                       className="
-                        text-sm
+                        text-xs sm:text-sm
                         font-semibold
                         text-slate-800
                         break-words
@@ -279,7 +283,7 @@ export default function OperationDetailsModal({
               <div
                 className="
                   flex items-center gap-2
-                  mb-5
+                  mb-4 sm:mb-5
                 "
               >
                 <Package
@@ -289,7 +293,7 @@ export default function OperationDetailsModal({
 
                 <h3
                   className="
-                    text-lg
+                    text-base sm:text-lg
                     font-semibold
                     text-slate-800
                   "
@@ -299,7 +303,7 @@ export default function OperationDetailsModal({
 
                 <span
                   className="
-                    px-2 py-1
+                    px-2 py-0.5
                     text-xs
                     rounded-full
                     bg-[#006B82]/10
@@ -316,88 +320,91 @@ export default function OperationDetailsModal({
                   bg-white
                   rounded-2xl
                   border border-slate-200
-                  overflow-hidden
+                  overflow-x-auto
                 "
               >
-                {/* Header */}
-
-                <div
-                  className="
-                    grid
-                    grid-cols-3
-                    bg-slate-50
-                    border-b border-slate-200
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-wider
-                    text-slate-500
-                  "
-                >
-                  <div className="px-6 py-4">
-                    Container No
-                  </div>
-
-                  <div className="px-6 py-4">
-                    Owner
-                  </div>
-
-                  <div className="px-6 py-4">
-                    Type
-                  </div>
-                </div>
-
-                {/* Rows */}
-
-                {containers.map(
-                  (
-                    container,
-                    index
-                  ) => (
-                    <div
-                      key={index}
-                      className="
-                        grid
-                        grid-cols-3
-                        border-b border-slate-100
-                        last:border-0
-                        hover:bg-slate-50
-                        transition-all
-                      "
-                    >
-                      <div
-                        className="
-                          px-6 py-4
-                          font-medium
-                          text-slate-800
-                        "
-                      >
-                        {container.container ||
-                          '-'}
-                      </div>
-
-                      <div
-                        className="
-                          px-6 py-4
-                          text-slate-600
-                        "
-                      >
-                        {container.container_owner ||
-                          '-'}
-                      </div>
-
-                      <div
-                        className="
-                          px-6 py-4
-                          text-slate-600
-                        "
-                      >
-                        {container.type ||
-                          '-'}
-                      </div>
+                <div className="min-w-[360px]">
+                  {/* Header */}
+                  <div
+                    className="
+                      grid
+                      grid-cols-3
+                      bg-slate-50
+                      border-b border-slate-200
+                      text-xs
+                      font-semibold
+                      uppercase
+                      tracking-wider
+                      text-slate-500
+                    "
+                  >
+                    <div className="px-4 py-3 sm:px-6 sm:py-4">
+                      Container No
                     </div>
-                  )
-                )}
+
+                    <div className="px-4 py-3 sm:px-6 sm:py-4">
+                      Owner
+                    </div>
+
+                    <div className="px-4 py-3 sm:px-6 sm:py-4">
+                      Type
+                    </div>
+                  </div>
+
+                  {/* Rows */}
+                  {containers.map(
+                    (
+                      container,
+                      index
+                    ) => (
+                      <div
+                        key={index}
+                        className="
+                          grid
+                          grid-cols-3
+                          border-b border-slate-100
+                          last:border-0
+                          hover:bg-slate-50
+                          transition-all
+                        "
+                      >
+                        <div
+                          className="
+                            px-4 py-3 sm:px-6 sm:py-4
+                            font-medium
+                            text-slate-800
+                            text-xs sm:text-sm
+                          "
+                        >
+                          {container.container ||
+                            '-'}
+                        </div>
+
+                        <div
+                          className="
+                            px-4 py-3 sm:px-6 sm:py-4
+                            text-slate-600
+                            text-xs sm:text-sm
+                          "
+                        >
+                          {container.container_owner ||
+                            '-'}
+                        </div>
+
+                        <div
+                          className="
+                            px-4 py-3 sm:px-6 sm:py-4
+                            text-slate-600
+                            text-xs sm:text-sm
+                          "
+                        >
+                          {container.type ||
+                            '-'}
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             </div>
           )}
@@ -434,99 +441,101 @@ export default function OperationDetailsModal({
                     bg-white
                     rounded-xl
                     border border-slate-200
-                    overflow-hidden
+                    overflow-x-auto
                   "
                 >
-                  {/* Header */}
-                  <div
-                    className="
-                      grid
-                      grid-cols-[2fr_80px_120px_120px]
-                      bg-slate-50
-                      border-b border-slate-200
-                      text-[10px]
-                      font-semibold
-                      uppercase
-                      tracking-wider
-                      text-slate-500
-                    "
-                  >
-                    <div className="px-4 py-2.5">
-                      Item
+                  <div className="min-w-[480px]">
+                    {/* Header */}
+                    <div
+                      className="
+                        grid
+                        grid-cols-[2fr_80px_120px_120px]
+                        bg-slate-50
+                        border-b border-slate-200
+                        text-[10px]
+                        font-semibold
+                        uppercase
+                        tracking-wider
+                        text-slate-500
+                      "
+                    >
+                      <div className="px-4 py-2.5">
+                        Item
+                      </div>
+
+                      <div className="px-4 py-2.5 text-center">
+                        Qty
+                      </div>
+
+                      <div className="px-4 py-2.5 text-right">
+                        Rate
+                      </div>
+
+                      <div className="px-4 py-2.5 text-right">
+                        Amount
+                      </div>
                     </div>
 
-                    <div className="px-4 py-2.5 text-center">
-                      Qty
-                    </div>
+                    {/* Rows */}
+                    {record.items.map(
+                      (item, index) => (
+                        <div
+                          key={index}
+                          className="
+                            grid
+                            grid-cols-[2fr_80px_120px_120px]
+                            border-b border-slate-100
+                            last:border-0
+                            hover:bg-slate-50
+                          "
+                        >
+                          <div className="px-4 py-3">
+                            <div className="font-medium text-slate-800 text-sm">
+                              {item.item_name}
+                            </div>
 
-                    <div className="px-4 py-2.5 text-right">
-                      Rate
-                    </div>
-
-                    <div className="px-4 py-2.5 text-right">
-                      Amount
-                    </div>
-                  </div>
-
-                  {/* Rows */}
-                  {record.items.map(
-                    (item, index) => (
-                      <div
-                        key={index}
-                        className="
-                          grid
-                          grid-cols-[2fr_80px_120px_120px]
-                          border-b border-slate-100
-                          last:border-0
-                          hover:bg-slate-50
-                        "
-                      >
-                        <div className="px-4 py-3">
-                          <div className="font-medium text-slate-800 text-sm">
-                            {item.item_name}
+                            {item.description && (
+                              <div className="text-xs text-slate-500 mt-0.5">
+                                {item.description}
+                              </div>
+                            )}
                           </div>
 
-                          {item.description && (
-                            <div className="text-xs text-slate-500 mt-0.5">
-                              {item.description}
-                            </div>
-                          )}
+                          <div className="px-4 py-3 text-center text-sm text-slate-700">
+                            {item.qty}
+                          </div>
+
+                          <div className="px-4 py-3 text-right text-sm text-slate-700">
+                            PGK {Number(item.rate).toLocaleString()}
+                          </div>
+
+                          <div className="px-4 py-3 text-right font-semibold text-slate-800">
+                            PGK {Number(item.amount).toLocaleString()}
+                          </div>
                         </div>
+                      )
+                    )}
 
-                        <div className="px-4 py-3 text-center text-sm text-slate-700">
-                          {item.qty}
-                        </div>
+                    {/* Footer Total */}
+                    <div
+                      className="
+                        flex
+                        justify-end
+                        gap-10
+                        px-4
+                        py-3
+                        bg-slate-50
+                        border-t border-slate-200
+                      "
+                    >
+                      <span className="font-medium text-slate-600">
+                        Grand Total
+                      </span>
 
-                        <div className="px-4 py-3 text-right text-sm text-slate-700">
-                          PGK {Number(item.rate).toLocaleString()}
-                        </div>
-
-                        <div className="px-4 py-3 text-right font-semibold text-slate-800">
-                          PGK {Number(item.amount).toLocaleString()}
-                        </div>
-                      </div>
-                    )
-                  )}
-
-                  {/* Footer Total */}
-                  <div
-                    className="
-                      flex
-                      justify-end
-                      gap-10
-                      px-4
-                      py-3
-                      bg-slate-50
-                      border-t border-slate-200
-                    "
-                  >
-                    <span className="font-medium text-slate-600">
-                      Grand Total
-                    </span>
-
-                    <span className="font-semibold text-slate-800">
-                      PGK {Number(record.grand_total || 0).toLocaleString()}
-                    </span>
+                      <span className="font-semibold text-slate-800">
+                        PGK {Number(record.grand_total || 0).toLocaleString()}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -441,22 +441,22 @@ export default function CreateJobCardModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="flex h-[92vh] w-full max-w-7xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4 backdrop-blur-sm">
+      <div className="flex h-[95vh] sm:h-[92vh] w-full max-w-7xl flex-col overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-2xl">
 
         {/* HEADER */}
-        <div className="flex items-start justify-between border-b border-gray-100 px-7 py-5">
-          <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100">
-              <ClipboardList className="h-7 w-7 text-orange-600" />
+        <div className="flex items-center justify-between border-b border-gray-100 px-4 py-4 sm:px-7 sm:py-5 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <div className="flex h-10 w-10 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-orange-100">
+              <ClipboardList className="h-5 w-5 sm:h-7 sm:w-7 text-orange-600" />
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-2xl font-bold text-gray-900 truncate">
                 New Job Card
               </h2>
 
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-gray-500 line-clamp-1 sm:line-clamp-none">
                 Create a job card to schedule
                 transport or storage services
                 for a customer
@@ -466,7 +466,7 @@ export default function CreateJobCardModal({
 
           <button
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-gray-100"
+            className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-gray-100"
           >
             <X className="h-5 w-5" />
           </button>
@@ -474,256 +474,263 @@ export default function CreateJobCardModal({
 
         {/* BODY */}
         <form
-  onSubmit={handleSubmit}
-  className="flex min-h-0 flex-1 overflow-hidden"
->
-  {/* LEFT SIDE */}
-  <div className="w-1/2 overflow-y-auto px-8 py-5">
-    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-      {leftFields.map((field) => {
-        const isTextArea =
-          field.fieldtype === 'Text' ||
-          field.fieldtype === 'Small Text'
-
-        return (
-          <div
-            key={field.fieldname}
-            className={
-              isTextArea ? 'col-span-2' : ''
-            }
-          >
-            {renderInput(field)}
-          </div>
-        )
-      })}
-    </div>
-  </div>
-
-  {/* RIGHT SIDE */}
-  <div className="w-1/2 border-l border-gray-100 bg-gray-50/50 px-6 py-6 overflow-y-auto">
-    <div className="border-b border-slate-200 pb-4">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-lg font-bold text-gray-900">
-            Containers
-          </h3>
-
-          <p className="mt-1 text-sm text-gray-500">
-            Add container entries for this
-            job card.
-          </p>
-        </div>
-
-        <Button
-          onClick={addContainerRow}
-          variant="outline"
-          size="sm"
-          icon={<Plus className="h-4 w-4" />}
+          onSubmit={handleSubmit}
+          className="flex flex-col lg:flex-row min-h-0 flex-1 overflow-y-auto lg:overflow-hidden"
         >
-          Add Container
-        </Button>
-      </div>
+          {/* LEFT SIDE */}
+          <div className="w-full lg:w-1/2 px-4 py-4 sm:px-6 lg:px-8 lg:py-5 lg:overflow-y-auto shrink-0 lg:shrink">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+              {leftFields.map((field) => {
+                const isTextArea =
+                  field.fieldtype === 'Text' ||
+                  field.fieldtype === 'Small Text'
 
-      {/* TABLE HEADER */}
-      <div className="mt-6 rounded-xl border border-gray-200 overflow-hidden">
-        <div className="
-  grid
-  grid-cols-12
-  bg-slate-50
-  px-3
-  py-2
-  text-[11px]
-  font-semibold
-  uppercase
-  tracking-wide
- text-center
- text-gray-600">
-          <div className="col-span-4">
-            Container Name
-          </div>
-
-          <div className="col-span-4">
-            Owner
-          </div>
-
-          <div className="col-span-3">
-            Type / Status
-          </div>
-
-          <div className="col-span-1"></div>
-        </div>
-
-        {/* TABLE BODY */}
-        <div className="divide-y divide-gray-100">
-          {containerRows.length === 0 && (
-            <div className="py-10 text-center text-sm text-gray-400">
-              No containers added yet
+                return (
+                  <div
+                    key={field.fieldname}
+                    className={
+                      isTextArea ? 'col-span-1 sm:col-span-2' : ''
+                    }
+                  >
+                    {renderInput(field)}
+                  </div>
+                )
+              })}
             </div>
-          )}
+          </div>
 
-          {containerRows.map((row, index) => (
-  <div
-    key={index}
-    className="grid grid-cols-12 gap-2 px-3 py-2"
-  >
-    {/* Container Dropdown */}
-    <div className="col-span-4">
-      <select
-        value={row.container || ''}
-        onChange={(e) =>
-          handleContainerSelect(
-            index,
-            e.target.value
-          )
-        }
-        className=" h-10
-    w-full
-    border-0
-    border-b
-    border-slate-300
-    bg-transparent
-    px-0
-    text-sm
-    focus:border-[#006B82]"
-      >
-        <option value="">
-          Select Container
-        </option>
+          {/* RIGHT SIDE */}
+          <div className="w-full lg:w-1/2 border-t lg:border-t-0 lg:border-l border-gray-100 bg-gray-50/50 px-4 py-5 sm:px-6 lg:overflow-y-auto shrink-0 lg:shrink">
+            <div className="border-b border-slate-200 pb-4">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900">
+                    Containers
+                  </h3>
 
-       {availableContainers
-  .filter((container) => {
-    // Only Available containers
-    if (
-      container.status !== 'Available'
-    ) {
-      return false
-    }
+                  <p className="mt-1 text-xs sm:text-sm text-gray-500">
+                    Add container entries for this
+                    job card.
+                  </p>
+                </div>
 
-    // Allow current row's selected container
-    if (
-      row.container ===
-      container.name
-    ) {
-      return true
-    }
+                <Button
+                  onClick={addContainerRow}
+                  variant="outline"
+                  size="sm"
+                  icon={<Plus className="h-4 w-4" />}
+                  className="shrink-0"
+                >
+                  Add Container
+                </Button>
+              </div>
 
-    // Prevent duplicates from other rows
-    return !containerRows.some(
-      (r, rowIndex) =>
-        rowIndex !== index &&
-        r.container ===
-          container.name
-    )
-  })
-  .map((container) => (
-    <option
-      key={container.name}
-      value={container.name}
-    >
-      {container.container_number}
-    </option>
-  ))}
-      </select>
-    </div>
+              {/* TABLE HEADER & BODY WRAPPER */}
+              <div className="mt-4 sm:mt-6 rounded-xl border border-gray-200 overflow-x-auto bg-white">
+                <div className="min-w-[480px]">
+                  <div className="
+                    grid
+                    grid-cols-12
+                    bg-slate-50
+                    px-3
+                    py-2
+                    text-[11px]
+                    font-semibold
+                    uppercase
+                    tracking-wide
+                    text-center
+                    text-gray-600
+                  ">
+                    <div className="col-span-4">
+                      Container Name
+                    </div>
 
-    {/* Owner Column */}
-    <div className="col-span-4">
-      <input
-        type="text"
-        readOnly
-        placeholder="Owner"
-        value={row.container_owner || ''}
-        className="
-  h-10
-  w-full
-  border-0
-  border-b
-  border-slate-300
-  bg-transparent
-  px-0
-  text-sm
-  text-gray-700
-  rounded-none
-  outline-none
-"
-      />
-    </div>
+                    <div className="col-span-4">
+                      Owner
+                    </div>
 
-    {/* Type Column */}
-    <div className="col-span-3">
-      <input
-        type="text"
-        readOnly
-        placeholder="Type"
-        value={row.type || ''}
-        className="
-  h-10
-  w-full
-  border-0
-  border-b
-  border-slate-300
-  bg-transparent
-  px-0
-  text-sm
-  text-gray-700
-  rounded-none
-  outline-none
-"
-      />
-    </div>
+                    <div className="col-span-3">
+                      Type / Status
+                    </div>
 
-    {/* Delete Button */}
-    <div className="col-span-1 flex items-center justify-center">
-      <button
-        type="button"
-        onClick={() =>
-          removeContainerRow(index)
-        }
-        className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-red-50 hover:text-red-600"
-      >
-        <Trash2 className="h-4 w-4" />
-      </button>
-    </div>
-  </div>
-))}
-        </div>
-      </div>
-    </div>
+                    <div className="col-span-1"></div>
+                  </div>
 
-    {/* SUMMARY */}
-  
-<div className="mt-5 rounded-2xl border border-gray-200 bg-white p-5">
-  <h4 className="text-sm font-semibold text-gray-700">
-    Summary
-  </h4>
+                  {/* TABLE BODY */}
+                  <div className="divide-y divide-gray-100">
+                    {containerRows.length === 0 && (
+                      <div className="py-8 sm:py-10 text-center text-xs sm:text-sm text-gray-400">
+                        No containers added yet
+                      </div>
+                    )}
 
-  <p className="mt-2 text-sm text-gray-500">
-    {
-      // Count only rows where a container has actually been selected
-      containerRows.filter(
-        (row) =>
-          row.container &&
-          String(row.container).trim() !== ''
-      ).length
-    }{' '}
-    container
-    {containerRows.filter(
-      (row) =>
-        row.container &&
-        String(row.container).trim() !== ''
-    ).length !== 1
-      ? 's'
-      : ''}{' '}
-    selected
-  </p>
-</div>
-  </div>
-</form>
+                    {containerRows.map((row, index) => (
+                      <div
+                        key={index}
+                        className="grid grid-cols-12 gap-2 px-3 py-2 items-center"
+                      >
+                        {/* Container Dropdown */}
+                        <div className="col-span-4">
+                          <select
+                            value={row.container || ''}
+                            onChange={(e) =>
+                              handleContainerSelect(
+                                index,
+                                e.target.value
+                              )
+                            }
+                            className="
+                              h-10
+                              w-full
+                              border-0
+                              border-b
+                              border-slate-300
+                              bg-transparent
+                              px-0
+                              text-xs sm:text-sm
+                              focus:border-[#006B82]
+                            "
+                          >
+                            <option value="">
+                              Select Container
+                            </option>
 
-        <div className="flex items-center justify-end gap-3 border-t border-gray-100 px-7 py-4">
+                            {availableContainers
+                              .filter((container) => {
+                                // Only Available containers
+                                if (
+                                  container.status !== 'Available'
+                                ) {
+                                  return false
+                                }
+
+                                // Allow current row's selected container
+                                if (
+                                  row.container ===
+                                  container.name
+                                ) {
+                                  return true
+                                }
+
+                                // Prevent duplicates from other rows
+                                return !containerRows.some(
+                                  (r, rowIndex) =>
+                                    rowIndex !== index &&
+                                    r.container ===
+                                      container.name
+                                )
+                              })
+                              .map((container) => (
+                                <option
+                                  key={container.name}
+                                  value={container.name}
+                                >
+                                  {container.container_number}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+
+                        {/* Owner Column */}
+                        <div className="col-span-4">
+                          <input
+                            type="text"
+                            readOnly
+                            placeholder="Owner"
+                            value={row.container_owner || ''}
+                            className="
+                              h-10
+                              w-full
+                              border-0
+                              border-b
+                              border-slate-300
+                              bg-transparent
+                              px-0
+                              text-xs sm:text-sm
+                              text-gray-700
+                              rounded-none
+                              outline-none
+                            "
+                          />
+                        </div>
+
+                        {/* Type Column */}
+                        <div className="col-span-3">
+                          <input
+                            type="text"
+                            readOnly
+                            placeholder="Type"
+                            value={row.type || ''}
+                            className="
+                              h-10
+                              w-full
+                              border-0
+                              border-b
+                              border-slate-300
+                              bg-transparent
+                              px-0
+                              text-xs sm:text-sm
+                              text-gray-700
+                              rounded-none
+                              outline-none
+                            "
+                          />
+                        </div>
+
+                        {/* Delete Button */}
+                        <div className="col-span-1 flex items-center justify-center">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              removeContainerRow(index)
+                            }
+                            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 text-gray-500 transition hover:bg-red-50 hover:text-red-600"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* SUMMARY */}
+            <div className="mt-4 sm:mt-5 rounded-2xl border border-gray-200 bg-white p-4 sm:p-5">
+              <h4 className="text-xs sm:text-sm font-semibold text-gray-700">
+                Summary
+              </h4>
+
+              <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500">
+                {
+                  // Count only rows where a container has actually been selected
+                  containerRows.filter(
+                    (row) =>
+                      row.container &&
+                      String(row.container).trim() !== ''
+                  ).length
+                }{' '}
+                container
+                {containerRows.filter(
+                  (row) =>
+                    row.container &&
+                    String(row.container).trim() !== ''
+                ).length !== 1
+                  ? 's'
+                  : ''}{' '}
+                selected
+              </p>
+            </div>
+          </div>
+        </form>
+
+        {/* FOOTER */}
+        <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3 border-t border-gray-100 px-4 py-3 sm:px-7 sm:py-4 shrink-0 bg-white">
           <Button
             variant="secondary"
             onClick={onClose}
+            className="w-full sm:w-auto justify-center"
           >
             Cancel
           </Button>
@@ -732,6 +739,7 @@ export default function CreateJobCardModal({
             type="submit"
             onClick={handleSubmit}
             loading={saving}
+            className="w-full sm:w-auto justify-center"
           >
             Save Job Card
           </Button>
