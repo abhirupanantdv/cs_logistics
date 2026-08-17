@@ -60,7 +60,8 @@ export default function CreateContainerModal({
           field.fieldname
         ) &&
         !field.hidden &&
-        !field.read_only
+        !field.read_only &&
+        Number(field.show_on_app || 0) === 1
     ) || []
 
   const handleChange = (

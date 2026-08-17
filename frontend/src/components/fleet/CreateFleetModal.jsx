@@ -86,7 +86,8 @@ export default function CreateFleetModal({
             ) &&
             !EXCLUDED_FIELDS.includes(
               field.fieldname
-            )
+            ) &&
+            Number(field.show_on_app || 0) === 1
         )
 
       setFields(filtered)

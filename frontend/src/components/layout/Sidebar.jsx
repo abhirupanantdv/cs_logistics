@@ -53,29 +53,30 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar({sidebarOpen,
-  setSidebarOpen,}) {
+export default function Sidebar({ sidebarOpen,
+  setSidebarOpen, }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { logout } = useAuth()
 
   const handleLogout = async () => {
-  try {
-    await logout();
+    try {
+      await logout();
 
-    setSidebarOpen(false);
-
-    navigate("/login", {
-      replace: true,
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
+      setSidebarOpen(false);
+      setUser(null)
+      setToken(null)
+      navigate("/login", {
+        replace: true,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <aside
-  className={`
+      className={`
     fixed xl:static
     left-0 top-0 z-50
 
@@ -91,18 +92,17 @@ export default function Sidebar({sidebarOpen,
     transition-transform
     duration-300
 
-    ${
-      sidebarOpen
-        ? "translate-x-0"
-        : "-translate-x-full xl:translate-x-0"
-    }
+    ${sidebarOpen
+          ? "translate-x-0"
+          : "-translate-x-full xl:translate-x-0"
+        }
 
     flex
     flex-col
     border-r
     border-[#0d435a]
   `}
->
+    >
       {/* Logo */}
       <div className="flex justify-center py-4 relative z-10 border-b border-[#0d435a] mb-4">
         <button
@@ -150,13 +150,12 @@ export default function Sidebar({sidebarOpen,
                     transition-all
                     text-left
 
-                    ${
-                      isActive
-                        ? `
+                    ${isActive
+                      ? `
                           bg-[#0d5b7a]
                           shadow-sm
                         `
-                        : `
+                      : `
                           hover:bg-white/5
                         `
                     }

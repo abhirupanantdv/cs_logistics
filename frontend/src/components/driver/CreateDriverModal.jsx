@@ -92,7 +92,8 @@ export default function CreateDriverModal({
             !field.is_virtual &&
             !EXCLUDED_FIELDS.includes(
               field.fieldname
-            )
+            ) &&
+            Number(field.show_on_app || 0) === 1
         )
 
       setFields(filtered)

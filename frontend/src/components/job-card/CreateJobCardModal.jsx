@@ -97,7 +97,8 @@ export default function CreateJobCardModal({
             !field.is_virtual &&
             !EXCLUDED_FIELDS.includes(
               field.fieldname
-            )
+            ) &&
+            Number(field.show_on_app || 0) === 1
           )
         })
         .filter((field) => {
@@ -113,7 +114,7 @@ export default function CreateJobCardModal({
       )
 
       const childTableField =
-        filteredFields.find(
+        meta.fields.find(
           (f) => f.fieldtype === 'Table'
         )
 
@@ -249,10 +250,11 @@ export default function CreateJobCardModal({
         ...formData,
       }
 
-      if (tableField?.fieldname) {
-        payload[tableField.fieldname] =
-          containerRows
-      }
+      const tableFieldName =
+        tableField?.fieldname || 'container'
+
+      payload[tableFieldName] =
+        containerRows
 
       const created = await createJobCard(
         payload
